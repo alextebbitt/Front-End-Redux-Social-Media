@@ -1,8 +1,11 @@
 import { useSelector } from "react-redux";
+import { Spin } from "antd";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
-
+if (!user) {
+    return <Spin />;
+}
   return (
     <div>
       <h1>Profile</h1>
