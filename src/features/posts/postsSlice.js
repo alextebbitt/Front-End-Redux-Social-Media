@@ -15,13 +15,22 @@ export const getAll = createAsyncThunk("posts/getAll", async () => {
     }
 });
 export const getById = createAsyncThunk("posts/getById", async (_id) => {
-    debugger;
+
     try {
         return await postsService.getById(_id);
     } catch (error) {
         console.error(error);
     }
+});
+
+export const getPostByName = createAsyncThunk("posts/getPostByName", async(postName) => {
+    try {
+        return await postsService.getPostByName(postName);
+    } catch (error) {
+        console.error(error);
+    }
 })
+
 
 export const postsSlice = createSlice({
     name: "posts",
@@ -41,6 +50,9 @@ export const postsSlice = createSlice({
             })
             builder.addCase(getById.fulfilled, (state, action) => {
                 state.post = action.payload;
+            })
+            builder.addCase(getPostByName.fulfilled, (state, action) => {
+                state.posts = action.payload;
             });
     },
 });
