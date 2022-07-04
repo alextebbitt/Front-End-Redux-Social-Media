@@ -40,13 +40,21 @@ export const deletePost = createAsyncThunk("posts/deletePost", async (id) => {
 });
 
 
-export const like = createAsyncThunk("products/like", async (_id) => {
+export const like = createAsyncThunk("posts/like", async (_id) => {
     try {
         return await postsService.like(_id);
     } catch (error) {
         console.error(error);
     }
 });
+
+export const unLike = createAsyncThunk("posts/like", async (_id) => {
+    try {
+        return await postsService.unLike(_id); 
+    } catch (error) {
+        console.error(error);
+    }
+})
 
 export const postsSlice = createSlice({
     name: "posts",
