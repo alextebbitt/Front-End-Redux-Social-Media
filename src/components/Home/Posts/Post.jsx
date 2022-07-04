@@ -10,7 +10,7 @@ const Post = () => {
         <Link to={"/post/id/" + post._id}>
           <h2>{post.title}</h2>
         </Link>
-        {/* <span> {post.body} </span> */}
+        
       </div>
     );
   });

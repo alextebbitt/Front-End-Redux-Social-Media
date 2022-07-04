@@ -13,7 +13,8 @@ const getById = async (_id) => {
 }
 
 const getPostByName = async (postTitle) => {
-const res = await axios.get(API_URL + "posts/search/" + postTitle);
+const res = await axios.get(API_URL + "/posts/search/" + postTitle);
+console.log(res.data)
 return res.data
 }
 const postsService = {
