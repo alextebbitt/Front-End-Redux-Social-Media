@@ -11,6 +11,7 @@ import PostDetail from './components/PostDetail/PostDetail';
 import Search from './components/Search/Search';
 import Admin from './components/Admin/Admin';
 import "antd/dist/antd.css";
+import PrivateZone from './guards/PrivateZone';
 
 function App() {
   return (
@@ -21,7 +22,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={
+              <PrivateZone>
+                <Profile />
+              </PrivateZone>
+            }
+          />
           <Route path="/post/id/:_id" element={<PostDetail />} />
           <Route path="/search/:postName" element={<Search />} />
           <Route path="/admin" element={<Admin />} />
