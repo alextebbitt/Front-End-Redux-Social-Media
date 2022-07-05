@@ -13,6 +13,7 @@ import Admin from './components/Admin/Admin';
 import "antd/dist/antd.css";
 import PrivateZone from './guards/PrivateZone';
 import AdminZone from './guards/AdminZone';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
           <Route path="/post/id/:_id" element={<PostDetail />} />
           <Route path="/search/:postName" element={<Search />} />
           <Route path="/admin" element={<AdminZone><Admin /></AdminZone>} />
-     
+          <Route path="*" element={<NotFound />} />
       </Routes>
       </BrowserRouter>
     </div>
