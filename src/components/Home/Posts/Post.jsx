@@ -2,7 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { deletePost, like, unLike, updatePost } from "../../../features/posts/postsSlice";
 
-import { HeartOutlined, HeartFilled } from "@ant-design/icons";
+import { HeartOutlined, HeartFilled, DeleteOutlined } from "@ant-design/icons";
+import "./Post.css";
 
 const Post = () => {
   const { posts } = useSelector((state) => state.posts);
@@ -21,6 +22,10 @@ const post = posts.map((post) => {
       <div className="Product" key={post._id}>
         <h3>{post.title}</h3>
         <p>{post.body}</p>
+        <button onClick={() => dispatch(deletePost(post._id))}>
+          <DeleteOutlined />
+        </button>
+        <button onClick={() => dispatch(updatePost(post._id))}>EditPost</button>
         <span className="wish">likes: {post.likes?.length}</span>
         {isAlreadyLiked ? (
           <HeartFilled onClick={() => dispatch(unLike(post._id))} />
@@ -35,8 +40,6 @@ const post = posts.map((post) => {
             EditPost
           </button>
         ) : null} */}
-        <button onClick={() => dispatch(deletePost(post._id))}>X</button>
-        <button onClick={() => dispatch(updatePost(post._id))}>EditPost</button>
       </div>
     );
   });

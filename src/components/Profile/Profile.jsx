@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Spin } from "antd";
 
+
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
 if (!user) {
@@ -12,6 +13,7 @@ if (!user) {
 
       <p>{user.user.name}</p>
       <p>{user.user.email}</p>
+      
     </div>
   );
 };
