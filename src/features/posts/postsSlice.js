@@ -100,6 +100,9 @@ export const postsSlice = createSlice({
                     })
                     state.posts = posts
                 });
+        builder.addCase(createPost.fulfilled, (state, action) => {
+            state.posts = [action.payload, ...state.posts];
+        })
     },
 });
 export const { reset } = postsSlice.actions;

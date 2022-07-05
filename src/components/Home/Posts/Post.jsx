@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { like, unLike } from "../../../features/posts/postsSlice";
+import { deletePost, like, unLike } from "../../../features/posts/postsSlice";
 
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 
@@ -9,9 +9,14 @@ const Post = () => {
 const { user } = useSelector((state) => state.auth);
 const dispatch = useDispatch();
  
+
 const post = posts.map((post) => {
     const isAlreadyLiked = post.likes?.includes(user?.user._id);
-    console.log(post)
+    
+    const author =  user.user.postIds
+    console.log(" this is teh autor", author)
+    
+
     return (
       <div className="Product" key={post._id}>
         <h3>{post.title}</h3>
@@ -22,6 +27,9 @@ const post = posts.map((post) => {
         ) : (
           <HeartOutlined onClick={() => dispatch(like(post._id))} />
         )}
+        {author.includes(post._id)? <button onClick={() => dispatch(deletePost(post._id))}>X</button> : null}
+        
+
       </div>
     );
   });

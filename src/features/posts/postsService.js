@@ -58,6 +58,7 @@ const createPost = async (postData) => {
             authorization: user?.token
         }
     });
+    console.log(res.data)
     return res.data
 }
 const postsService = {

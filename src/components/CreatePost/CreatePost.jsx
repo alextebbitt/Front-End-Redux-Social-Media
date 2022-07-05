@@ -16,7 +16,7 @@ function OnCreatePost (e) {
     }
        console.log(postData)
          dispatch(createPost(postData));
-     
+     //
 }
   return (
     <>
