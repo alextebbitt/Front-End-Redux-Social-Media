@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
+import { getInfo } from '../../features/auth/authSlice';
 import { createPost} from "../../features/posts/postsSlice";
 
 const CreatePost = () => {
@@ -14,9 +15,10 @@ function OnCreatePost (e) {
         title,
         body: description
     }
-       console.log(postData)
+       
          dispatch(createPost(postData));
-     //
+        
+        
 }
   return (
     <>

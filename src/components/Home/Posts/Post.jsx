@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { deletePost, like, unLike } from "../../../features/posts/postsSlice";
+import { deletePost, like, unLike, updatePost } from "../../../features/posts/postsSlice";
 
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 
@@ -9,12 +9,12 @@ const Post = () => {
 const { user } = useSelector((state) => state.auth);
 const dispatch = useDispatch();
  
+const author =  user.user.postIds
+console.log(" 111111", author)
 
 const post = posts.map((post) => {
     const isAlreadyLiked = post.likes?.includes(user?.user._id);
     
-    const author =  user.user.postIds
-    console.log(" this is teh autor", author)
     
 
     return (
@@ -27,9 +27,16 @@ const post = posts.map((post) => {
         ) : (
           <HeartOutlined onClick={() => dispatch(like(post._id))} />
         )}
-        {author.includes(post._id)? <button onClick={() => dispatch(deletePost(post._id))}>X</button> : null}
-        
-
+        {/* {author.includes(post._id) ? (
+          <button onClick={() => dispatch(deletePost(post._id))}>X</button>
+        ) : null} */}
+        {/* {author.includes(post._id) ? (
+          <button onClick={() => dispatch(updatePost(post._id))}>
+            EditPost
+          </button>
+        ) : null} */}
+        <button onClick={() => dispatch(deletePost(post._id))}>X</button>
+        <button onClick={() => dispatch(updatePost(post._id))}>EditPost</button>
       </div>
     );
   });

@@ -60,7 +60,31 @@ const createPost = async (postData) => {
     });
     console.log(res.data)
     return res.data
-}
+};
+
+const updatePost = async (_id) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const res = await axios.put(API_URL + "/posts/", _id, {}, {
+        headers: {
+            authorization: user?.token
+        }
+    });
+    console.log(res.data)
+    return res.data
+};
+
+const comment = async (_id) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const res = await axios.put(API_URL + "/posts/comments/", _id, {
+        headers: {
+            authorization: user?.token
+        }
+    });
+    console.log(res.data)
+    return res.data
+};
+
+
 const postsService = {
     getAll,
     getById,
@@ -68,7 +92,9 @@ const postsService = {
     deletePost,
     like,
     unLike,
-    createPost
+    createPost,
+    updatePost,
+    comment
 };
 
 export default postsService

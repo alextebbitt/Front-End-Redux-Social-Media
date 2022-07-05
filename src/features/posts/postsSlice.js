@@ -23,7 +23,7 @@ export const getById = createAsyncThunk("posts/getById", async (_id) => {
     }
 });
 
-export const getPostByName = createAsyncThunk("posts/getPostByName", async(postName) => {
+export const getPostByName = createAsyncThunk("posts/getPostByName", async (postName) => {
     try {
         return await postsService.getPostByName(postName);
     } catch (error) {
@@ -48,9 +48,9 @@ export const like = createAsyncThunk("posts/like", async (_id) => {
     }
 });
 
-export const unLike = createAsyncThunk("posts/like", async (_id) => {
+export const unLike = createAsyncThunk("posts/unLike", async (_id) => {
     try {
-        return await postsService.unLike(_id); 
+        return await postsService.unLike(_id);
     } catch (error) {
         console.error(error);
     }
@@ -62,7 +62,23 @@ export const createPost = createAsyncThunk("posts/", async (postData) => {
     } catch (error) {
         console.error(error)
     }
-})
+});
+
+export const updatePost = createAsyncThunk("posts/update", async (_id) => {
+    try {
+        return await postsService.updatePost(_id);
+    } catch (error) {
+        console.error(error)
+    }
+});
+
+export const comment = createAsyncThunk("posts/comments", async (_id) => {
+    try {
+        return await postsService.comment(_id);
+    } catch (error) {
+        console.error(error)
+    }
+});
 
 export const postsSlice = createSlice({
     name: "posts",
@@ -77,32 +93,43 @@ export const postsSlice = createSlice({
             .addCase(getAll.fulfilled, (state, action) => {
                 state.posts = action.payload;
             })
-            builder.addCase(getAll.pending, (state) => {
-                state.isLoading = true;
-            })
-            builder.addCase(getById.fulfilled, (state, action) => {
-                state.post = action.payload;
-            })
-            builder.addCase(getPostByName.fulfilled, (state, action) => {
-                state.posts = action.payload;
-            })
-            builder.addCase(deletePost.fulfilled, (state, action) => {
+        .addCase(getAll.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(getById.fulfilled, (state, action) => {
+            state.post = action.payload;
+        })
+        .addCase(getPostByName.fulfilled, (state, action) => {
+            state.posts = action.payload;
+        })
+        .addCase(deletePost.fulfilled, (state, action) => {
             console.log(action.payload)
             state.posts = state.posts.filter((post) => post._id !== action.payload.post._id);
-
+        })
+        .addCase(like.fulfilled, (state, action) => {
+            const posts = state.posts.map((post) => {
+                 if (post._id === action.payload._id) {
+                     post = action.payload;
+                    }
+                    return post
+                })
+                state.posts = posts
             })
-                .addCase(like.fulfilled, (state, action) => {
-                    const posts = state.posts.map((post) => {
-                        if (post._id === action.payload._id) {
-                            post = action.payload;
-                        }
-                        return post
-                    })
-                    state.posts = posts
-                });
-        builder.addCase(createPost.fulfilled, (state, action) => {
+            .addCase(unLike.fulfilled, (state, action) => {
+                const posts = state.posts.map((post) => {
+                    if (post._id === action.payload._id) {
+                        post = action.payload;
+                    }
+                    return post
+                })
+                state.posts = posts
+            })
+        .addCase(createPost.fulfilled, (state, action) => {
             state.posts = [action.payload, ...state.posts];
         })
+            .addCase(updatePost.fulfilled, (state, action) => {
+                state.post = action.payload;
+            })
     },
 });
 export const { reset } = postsSlice.actions;
