@@ -1,13 +1,25 @@
 
 
 .text {
+    
     width: 70%;
+    border-radius: 2rem;
 }
 
 .textarea {
     width: 70%;
+    border-radius: 2rem;
 }
 
 .form {
+    margin: 2rem;
+  
     padding-bottom: 2rem;
+    background-color:rgba(0, 100, 0, 0.265);
+    border-radius: 5rem;
+}
+
+.create-post-container {
+    flex-direction: column;
+  align-items: center;  
 }
