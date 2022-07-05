@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
 import { notification, Avatar } from "antd";
 import { useState } from "react";
-// import "./Header.scss";
+import './Header.css';
 
 
 const Header = () => {
@@ -30,42 +30,44 @@ const Header = () => {
 
   return (
     <nav>
-      <span>header</span>
-      <div>
-        <input onKeyUp={handleChange} placeholder="search post" name="text" />
-        <span>
-          <Link to="/">Home</Link>
-        </span>
-        {user ? (
-          <>
-            <span>
-              <Link to="/" onClick={onLogout}>
-                Logout
-              </Link>
-            </span>
-            <span>
-              <Link to="/profile">
-                <Avatar>{user.user.name[0]}</Avatar>
-              </Link>
-            </span>
-            {user.user.role === "admin" ? (
+      <div className="topnav">
+        <h1 className="logo">Socialinstaface</h1>
+        <div>
+          <input onKeyUp={handleChange} placeholder="search post" name="text" />
+          <span>
+            <Link to="/">Home</Link>
+          </span>
+          {user ? (
+            <>
               <span>
-                <Link to="/admin">Admin</Link>
+                <Link to="/" onClick={onLogout}>
+                  Logout
+                </Link>
               </span>
-            ) : (
-              ""
-            )}
-          </>
-        ) : (
-          <>
-            <span>
-              <Link to="/login">Login</Link>
-            </span>
-            <span>
-              <Link to="/register">Register</Link>
-            </span>
-          </>
-        )}
+              <span>
+                <Link to="/profile">
+                  <Avatar>{user.user.name[0]}</Avatar>
+                </Link>
+              </span>
+              {user.user.role === "admin" ? (
+                <span>
+                  <Link to="/admin">Admin</Link>
+                </span>
+              ) : (
+                ""
+              )}
+            </>
+          ) : (
+            <>
+              <span>
+                <Link to="/login">Login</Link>
+              </span>
+              <span>
+                <Link to="/register">Register</Link>
+              </span>
+            </>
+          )}
+        </div>
       </div>
     </nav>
   );

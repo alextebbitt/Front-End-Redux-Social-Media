@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import { getInfo } from '../../features/auth/authSlice';
 import { createPost} from "../../features/posts/postsSlice";
+import "./CreatePost.css";
 
 const CreatePost = () => {
 const [title, setTitle] = useState('');
@@ -22,41 +23,43 @@ function OnCreatePost (e) {
 }
   return (
     <>
-      <div>
+      <div className='create-post-container'>
         <div>
-          <h2>Create Post</h2>
+          <div className="create-post">
+            <h2>Create Post</h2>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <form onSubmit={OnCreatePost}>
-          <div>
-            <label>Title</label>
+        <div>
+          <form className='form' onSubmit={OnCreatePost}>
             <div>
-              <input
-                type="text"
-                className="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
+              <label>Title</label>
+              <div>
+                <input
+                  type="text"
+                  className="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <label>Description</label>
             <div>
-              <textarea
-                className="textarea"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
+              <label>Description</label>
+              <div>
+                <textarea
+                  className="textarea"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <button type="submit" className="submit">
-              Create Post
-            </button>
-          </div>
-        </form>
+            <div>
+              <button type="submit" className="submit">
+                Create Post
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );
