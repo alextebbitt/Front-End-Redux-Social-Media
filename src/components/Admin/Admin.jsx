@@ -2,6 +2,7 @@ import PostAdmin from "./PostAdmin/PostAdmin";
 import { useDispatch, useSelector } from "react-redux";
 import { getAll, reset } from "../../features/posts/postsSlice";
 import { useEffect } from "react";
+import "./Admin.scss";
 
 const Admin = () => {
   const { isLoading } = useSelector((state) => state.posts);
@@ -18,9 +19,11 @@ const Admin = () => {
     return <h1>Loading posts...</h1>;
   }
   return (
-    <div>
+    <div className="container">
       <h1>Admin</h1>
-      <PostAdmin />
+      <div className="posts">
+        <PostAdmin />
+      </div>
     </div>
   );
 };

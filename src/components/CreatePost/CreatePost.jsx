@@ -1,26 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { Link } from "react-router-dom";
-import { getInfo } from '../../features/auth/authSlice';
-import { createPost} from "../../features/posts/postsSlice";
-import "./CreatePost.css";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { createPost } from "../../features/posts/postsSlice";
+import "./CreatePost.scss";
 
 const CreatePost = () => {
-const [title, setTitle] = useState('');
-const [ description, setDescription ] = useState("");
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-function OnCreatePost (e) {
+  function OnCreatePost(e) {
     e.preventDefault();
-    const postData = {
-        title,
-        body: description
-    }
-       
-         dispatch(createPost(postData));
-        
-        
-}
+    const formData = new FormData();
+    console.log("hey", e.target.image.files[0].name);
+    if (e.target.image.files[0]) formData.set("image", e.target.image.files[0]);
+    formData.set("title", e.target.title.value);
+
+    formData.set("body", e.target.description.value);
+
+   
+
+    dispatch(createPost(formData));
+  }
   return (
     <>
       <div className="create-post-container">
@@ -33,23 +32,27 @@ function OnCreatePost (e) {
         <div>
           <form className="form" onSubmit={OnCreatePost}>
             <div>
-              <label>Title of post (so people can find it)</label>
+              <label className="label">
+                <h2>
+                  Title of post <h6>(so people can find it in search bar)</h6>
+                </h2>
+              </label>
               <div>
                 <input
                   type="text"
                   className="text"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  name="title"
                 />
               </div>
             </div>
             <div>
-              <label>Post</label>
+              <label>
+                <h2>---Post---</h2>
+              </label>
               <div>
                 <textarea
                   className="textarea"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  name="description"
                 />
               </div>
             </div>
@@ -57,9 +60,11 @@ function OnCreatePost (e) {
               <button type="submit" className="submit">
                 Create Post
               </button>
-              <div className='select-a-file'>
-                <label for="myfile">Select a file:</label>
-                <input type="file" id="myfile" name="myfile" />
+              <div className="select">
+                <label className="Select-a-file" for="myfile">
+                  Select a file:
+                </label>
+                <input type="file" className="myfile" name="image" />
               </div>
             </div>
           </form>
@@ -67,6 +72,6 @@ function OnCreatePost (e) {
       </div>
     </>
   );
-}
+};
 
-export default CreatePost
+export default CreatePost;

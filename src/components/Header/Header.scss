@@ -1,5 +1,7 @@
+@import "../../colors.scss";
+
 .topnav {
-  background-color: rgba(61, 164, 57, 0.603);
+  background-color: $lightmid;
   overflow: hidden;
   padding-right: 50px;
   display: flex;

@@ -5,7 +5,7 @@ import { logout } from "../../features/auth/authSlice";
 import { notification, Avatar, } from "antd";
 import { LogoutOutlined, HomeOutlined} from "@ant-design/icons";
 import { useState } from "react";
-import './Header.css';
+import './Header.scss';
 
 
 const Header = () => {

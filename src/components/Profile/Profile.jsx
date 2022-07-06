@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import { Spin } from "antd";
-import Post from "../Home/Posts/Post";
-import { useEffect } from "react";
+import "./Profile.scss";
+
+
 
 const Profile = () => {
   //  const { posts } = useSelector((state) => state.posts);
@@ -9,10 +10,10 @@ const Profile = () => {
   console.log(user.user);
   const userPost = user.user.postIds.map((postids) => {
     return (
-      <p>
-        {postids.title}
-        {postids.body}
-      </p>
+      <div>
+        <p>{postids.title}</p>
+        <p>{postids.body}</p>
+      </div>
     );
   });
 
@@ -23,21 +24,19 @@ const Profile = () => {
     return <Spin />;
   }
 
-  // useEffect(() => {
-  //   post()
-
-  //   return () => {
-
-  //   }
-  // }, [post])
-
+ 
   return (
     <div>
-      <h1>Profile</h1>
+      <h1>Your Profile</h1>
+      <div className="name-email">
+        <h2>Name: {user.user.name}</h2>
+        <h2>Email: {user.user.email}</h2>
+      </div>
 
-      <p>{user.user.name}</p>
-      <p>{user.user.email}</p>
-      <div>{userPost}</div>
+      <div className="posts">
+        <h2>Your posts:</h2>
+        {userPost}
+      </div>
     </div>
   );
 };

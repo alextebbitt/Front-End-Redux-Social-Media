@@ -1,0 +1,12 @@
+@import "../../colors.scss";
+
+.name-email {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    background-color: $lightmid;
+}
+
+// .posts {
+//     display: flex;
+// }

@@ -4,7 +4,7 @@ import Post from "./Post";
 import { getAll, reset } from "../../../features/posts/postsSlice";
 import { Spin } from "antd";
 import { getInfo } from "../../../features/auth/authSlice";
-import "./Posts.css";
+import "./Posts.scss";
 
 
 
