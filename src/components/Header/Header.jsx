@@ -24,9 +24,9 @@ const Header = () => {
     e.preventDefault();
     dispatch(logout());
     notification.success({ message: "logged out successfully" });
-    setTimeout(() => {
+    
       navigate("/login");
-    }, 2000);
+   
   };
 
   return (

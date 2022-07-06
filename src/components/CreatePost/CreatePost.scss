@@ -14,11 +14,11 @@
     height: 70px;
 }
 
-.form {
+.form-post {
     margin: 2rem;
   padding-top: 20px; 
     padding-bottom: 2rem;
-    background-color: $dark;
+    background-color: $mid;
     border-radius: 5rem;
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.966);
     transition: 0.3s;
@@ -45,7 +45,7 @@
     width: 100px;
 }
 .submit:hover {
-    background-color: rgba(0, 17, 255, 0.361);
+    background-color: $darkblue;
 }
 
 .myfile {

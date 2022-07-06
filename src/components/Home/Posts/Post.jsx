@@ -11,7 +11,7 @@ import {
   DeleteOutlined,
   EditOutlined,
 } from "@ant-design/icons";
-import "./Post.css";
+import "./Post.scss";
 
 const Post = () => {
   const { posts } = useSelector((state) => state.posts);
@@ -25,36 +25,46 @@ const Post = () => {
     const isAlreadyLiked = post.likes?.includes(user?.user._id);
 
     return (
-      <div className="Product" key={post._id}>
-        <h3>{post.title}</h3>
-        <p>{post.body}</p>
-        {console.log(API_URL + "imagesmulter/" + post.image_path)}
-        <img src={API_URL + post.image_path} alt="" />
-        <button onClick={() => dispatch(deletePost(post._id))}>
-          <DeleteOutlined />
-        </button>
-        <button onClick={() => dispatch(updatePost(post._id))}>
-          <EditOutlined />
-        </button>
-        <span className="wish">likes: {post.likes?.length}</span>
-        {isAlreadyLiked ? (
-          <HeartFilled onClick={() => dispatch(unLike(post._id))} />
-        ) : (
-          <HeartOutlined onClick={() => dispatch(like(post._id))} />
-        )}
-        {/* {author.includes(post._id) ? (
+      <div className="container" key={post._id}>
+        <div className="title-body-image">
+          <div className="title-body">
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+           
+          </div>
+
+          {console.log(API_URL + "imagesmulter/" + post.image_path)}
+          <div className="image">
+            <img src={API_URL + post.image_path} alt="" />
+          </div>
+        </div>
+        <div className="delete-edit-like">
+          <button onClick={() => dispatch(deletePost(post._id))}>
+            <DeleteOutlined />
+          </button>
+          <button onClick={() => dispatch(updatePost(post._id))}>
+            <EditOutlined />
+          </button>
+          <span className="wish">likes: {post.likes?.length}</span>
+          {isAlreadyLiked ? (
+            <HeartFilled onClick={() => dispatch(unLike(post._id))} />
+          ) : (
+            <HeartOutlined onClick={() => dispatch(like(post._id))} />
+          )}
+          {/* {author.includes(post._id) ? (
           <button onClick={() => dispatch(deletePost(post._id))}>X</button>
         ) : null} */}
-        {/* {author.includes(post._id) ? (
+          {/* {author.includes(post._id) ? (
           <button onClick={() => dispatch(updatePost(post._id))}>
             EditPost
           </button>
         ) : null} */}
+        </div>
       </div>
     );
   });
 
-  return <div>{post}</div>;
+  return <div className="post">{post}</div>;
 };
 
 export default Post;

@@ -30,7 +30,7 @@ const CreatePost = () => {
         </div>
 
         <div>
-          <form className="form" onSubmit={OnCreatePost}>
+          <form className="form-post" onSubmit={OnCreatePost}>
             <div>
               <label className="label">
                 <h2>

@@ -4,7 +4,7 @@ import CreatePost from "../CreatePost/CreatePost";
 
 const Home = () => {
   return (
-    <div>Home
+    <div>
       <CreatePost/>
       <Posts/>
     </div>

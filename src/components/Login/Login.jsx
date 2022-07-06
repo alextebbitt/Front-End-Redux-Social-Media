@@ -39,26 +39,16 @@ const Login = () => {
    };
 
   return (
-    <div className="image">
+      <div className="page-container2">
+    <div className="image2">
       <img
         src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
         alt="Italian Trulli"
       ></img>
-      {/* // <form onSubmit={onSubmit}>
-    //   <input type="email" name="email" value={email} onChange={onChange} />
-    //   <input
-    //     type="password"
-    //     name="password"
-    //     value={password}
-    //     onChange={onChange}
-    //   />
-
-    //   <button type="submit">Login</button>
-    // </form> */}
-      <div className="page-container">
+      </div>
+        <div className="div-container2">
         <h1>Login</h1>
-        <div className="div-container">
-          <Form
+          <Form className="form"
             name="basic"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
@@ -91,7 +81,7 @@ const Login = () => {
             </Form.Item>
           </Form>
         </div>
-      </div>
+      
     </div>
   );
 };
