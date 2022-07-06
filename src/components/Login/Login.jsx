@@ -39,7 +39,12 @@ const Login = () => {
    };
 
   return (
-    // <form onSubmit={onSubmit}>
+    <div className="image">
+      <img
+        src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
+        alt="Italian Trulli"
+      ></img>
+      {/* // <form onSubmit={onSubmit}>
     //   <input type="email" name="email" value={email} onChange={onChange} />
     //   <input
     //     type="password"
@@ -49,40 +54,43 @@ const Login = () => {
     //   />
 
     //   <button type="submit">Login</button>
-    // </form>
-    <div className="page-container">
-      <h1>Login</h1>
-      <div className="div-container">
-        <Form
-          name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-        >
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: "Please input your Email!" }]}
+    // </form> */}
+      <div className="page-container">
+        <h1>Login</h1>
+        <div className="div-container">
+          <Form
+            name="basic"
+            labelCol={{ span: 8 }}
+            wrapperCol={{ span: 16 }}
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
           >
-            <Input />
-          </Form.Item>
+            <Form.Item
+              label="Email"
+              name="email"
+              rules={[{ required: true, message: "Please input your Email!" }]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
-          >
-            <Input.Password />
-          </Form.Item>
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[
+                { required: true, message: "Please input your password!" },
+              ]}
+            >
+              <Input.Password />
+            </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
+            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
       </div>
     </div>
   );

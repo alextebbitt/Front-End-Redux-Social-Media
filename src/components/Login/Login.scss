@@ -1,4 +1,14 @@
-
+$backgroundimage: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg") ;
+body {
+    background-image: url("../../assets/dimension.png");
+}
+.image {
+    
+    display: flex;
+    justify-content: space-around;
+    padding-top: 30px;
+    
+}
 .div-container {
     margin: 30px;
     display: flex;
@@ -6,7 +16,7 @@
     border: solid;
     padding-top: 50px;
     background-color: rgba(27, 7, 26, 0.126);
-    width: 50%;
+    width: 100%;
     box-shadow: black;
     box-shadow: 0 4px 8px 0 rgba(55, 179, 92, 0.849);
     transition: 0.3s;

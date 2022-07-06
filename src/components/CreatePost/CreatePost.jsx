@@ -23,7 +23,7 @@ function OnCreatePost (e) {
 }
   return (
     <>
-      <div className='create-post-container'>
+      <div className="create-post-container">
         <div>
           <div className="create-post">
             <h2>Create Post</h2>
@@ -31,9 +31,9 @@ function OnCreatePost (e) {
         </div>
 
         <div>
-          <form className='form' onSubmit={OnCreatePost}>
+          <form className="form" onSubmit={OnCreatePost}>
             <div>
-              <label>Title</label>
+              <label>Title of post (so people can find it)</label>
               <div>
                 <input
                   type="text"
@@ -44,7 +44,7 @@ function OnCreatePost (e) {
               </div>
             </div>
             <div>
-              <label>Description</label>
+              <label>Post</label>
               <div>
                 <textarea
                   className="textarea"
@@ -53,10 +53,14 @@ function OnCreatePost (e) {
                 />
               </div>
             </div>
-            <div>
+            <div className="buttons">
               <button type="submit" className="submit">
                 Create Post
               </button>
+              <div className='select-a-file'>
+                <label for="myfile">Select a file:</label>
+                <input type="file" id="myfile" name="myfile" />
+              </div>
             </div>
           </form>
         </div>
