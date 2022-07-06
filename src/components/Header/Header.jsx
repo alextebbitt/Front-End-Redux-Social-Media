@@ -2,7 +2,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
-import { notification, Avatar } from "antd";
+import { notification, Avatar, } from "antd";
+import { LogoutOutlined, HomeOutlined} from "@ant-design/icons";
 import { useState } from "react";
 import './Header.css';
 
@@ -35,13 +36,15 @@ const Header = () => {
         <div>
           <input onKeyUp={handleChange} placeholder="search post" name="text" />
           <span>
-            <Link to="/">Home</Link>
+            <Link to="/">
+              <HomeOutlined />
+            </Link>
           </span>
           {user ? (
             <>
               <span>
                 <Link to="/" onClick={onLogout}>
-                  Logout
+                  {<LogoutOutlined />}
                 </Link>
               </span>
               <span>
