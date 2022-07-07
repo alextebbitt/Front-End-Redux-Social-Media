@@ -1,3 +1,4 @@
+@import "../../colors.scss";
 .register-form {
     padding-top: 40px;
     display: flex;
@@ -12,7 +13,7 @@
 }
 
 .signup, h3{
-    color: lightblue;
+    color: $mid;
 }
 
 .button-signup {
@@ -23,7 +24,4 @@
 }
 .button-signup:hover {
     background-color: green;
-}
-body {
-    background-color: black;
 }

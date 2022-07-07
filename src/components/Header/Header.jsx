@@ -6,6 +6,7 @@ import { notification, Avatar, } from "antd";
 import { LogoutOutlined, HomeOutlined} from "@ant-design/icons";
 import { useState } from "react";
 import './Header.scss';
+import Logo3 from "../../assets/logo3.png";
 
 
 const Header = () => {
@@ -32,7 +33,10 @@ const Header = () => {
   return (
     <nav>
       <div className="topnav">
-        <h1 className="logo">Socialinstaface</h1>
+        <img
+          src={Logo3} height="100px" 
+          alt="Girl in a jacket"
+        ></img>
         <div>
           <input onKeyUp={handleChange} placeholder="search post" name="text" />
           <span>
