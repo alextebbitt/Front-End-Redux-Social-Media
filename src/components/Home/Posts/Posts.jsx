@@ -30,7 +30,7 @@ const Posts = () => {
   }
   return (
     <div className="posts">
-      Posts
+      <h1 className="font">Popular trending Posts</h1>
       <Post />
     </div>
   );

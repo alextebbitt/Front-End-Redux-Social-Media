@@ -1,38 +1,47 @@
 @import "../../../colors.scss";
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
 
 .post {
     margin: 3rem;
-
-}
-
-
-
-.container {
- flex-wrap: wrap;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0px 25px 25px 25px;
+
+}
+.font{
+    font-family: "pathway Gothic One";
+    font-size: 40px;
+    background-color: $mid;
+}
+
+
+.container {
+   flex-wrap: wrap;
+    
+    
+   
     border-bottom: solid;
-    transition: 0.3s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.9);
+  transition: 0.3s;
+    width: 50%;
+    padding-top: 15px;
 }
 
 .title-body-image {
-display: flex;
+
 }
 
 .title-body {
-padding-top: 4rem;
-padding-right: 4rem;
-padding-left: 4rem;
+padding-top: 2rem;
+padding-right: 2rem;
+padding-left: 2rem;
 }
 
 .image {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-padding-right: 2rem;
-width: 350px;
-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .delete-edit-like{
@@ -42,4 +51,5 @@ justify-content: flex-end;
 gap: 15px;
 padding-right: 30px;
 padding-top: 20px;
+font-size: 22px;
 }

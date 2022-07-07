@@ -23,7 +23,7 @@ const CreatePost = () => {
       <div className="create-post-container">
         <div>
           <div className="create-post">
-            <h2>Create Post</h2>
+            <h2 className="fonts">Create Post</h2>
           </div>
         </div>
 

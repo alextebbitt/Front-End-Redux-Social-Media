@@ -7,6 +7,7 @@ import { LogoutOutlined, HomeOutlined} from "@ant-design/icons";
 import { useState } from "react";
 import './Header.scss';
 import Logo3 from "../../assets/logo3.png";
+import Logo4 from "../../assets/logo4.png";
 
 
 const Header = () => {
@@ -33,12 +34,10 @@ const Header = () => {
   return (
     <nav>
       <div className="topnav">
-        <img
-          src={Logo3} height="100px" 
-          alt="Girl in a jacket"
-        ></img>
+        <img src={Logo3} height="80px" alt="Girl in a jacket"></img>
+        
         <div>
-          <input onKeyUp={handleChange} placeholder="search post" name="text" />
+          <input onKeyUp={handleChange} placeholder="Search post" name="text" />
           <span>
             <Link to="/">
               <HomeOutlined />
