@@ -1,18 +1,61 @@
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Spin } from "antd";
+import {
+  HeartOutlined,
+  HeartFilled,
+  DeleteOutlined,
+  EditOutlined,
+} from "@ant-design/icons";
+import {
+  deletePost,
+  getById,
+  like,
+  unLike,
+  updatePost,
+} from "../../features/posts/postsSlice";
 import "./Profile.scss";
-
-
+const API_URL = "http://localhost:8787/";
 
 const Profile = () => {
-  //  const { posts } = useSelector((state) => state.posts);
+  const { post } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state.auth);
-  
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const dispatch = useDispatch();
+
   const userPost = user.user.postIds.map((postids) => {
+    const isAlreadyLiked = post.likes?.includes(user?.user._id);
+
+    const showModal = (_id) => {
+      dispatch(getById(_id));
+      setIsModalVisible(true);
+    };
+
     return (
       <div>
         <p>{postids.title}</p>
         <p>{postids.body}</p>
+        <div className="image">
+          <img src={API_URL + post.image_path} alt="" />
+        </div>
+        <div className="delete-edit-like">
+          <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
+          <EditOutlined onClick={() => showModal(post._id)} />
+          <span className="wish">likes: {post.likes?.length}</span>
+          {isAlreadyLiked ? (
+            <HeartFilled onClick={() => dispatch(unLike(post._id))} />
+          ) : (
+            <HeartOutlined onClick={() => dispatch(like(post._id))} />
+          )}
+          {/* {author.includes(post._id) ? (
+          <button onClick={() => dispatch(deletePost(post._id))}>X</button>
+        ) : null} */}
+          {/* {author.includes(post._id) ? (
+          <button onClick={() => dispatch(updatePost(post._id))}>
+            EditPost
+          </button>
+        ) : null} */}
+        </div>
       </div>
     );
   });
@@ -24,7 +67,6 @@ const Profile = () => {
     return <Spin />;
   }
 
- 
   return (
     <div>
       <h1>Your Profile</h1>
