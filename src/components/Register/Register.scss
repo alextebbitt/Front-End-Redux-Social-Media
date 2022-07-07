@@ -1,0 +1,29 @@
+.register-form {
+    padding-top: 40px;
+    display: flex;
+    
+    justify-content: center;
+    flex-direction: column;
+    border: solid;
+    border-color: aliceblue;
+    margin: 300px;
+    margin-top: 0;
+    
+}
+
+.signup, h3{
+    color: lightblue;
+}
+
+.button-signup {
+    margin: 20px;
+    width: 100px;
+    height: 50px;
+    border-radius: 2rem;
+}
+.button-signup:hover {
+    background-color: green;
+}
+body {
+    background-color: black;
+}
