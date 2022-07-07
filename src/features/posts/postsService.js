@@ -62,16 +62,19 @@ const createPost = async (postData) => {
     return res.data
 };
 
-const updatePost = async (_id) => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const res = await axios.put(API_URL + "/posts/", _id, {}, {
+const updatePost = async (post) => {
+    console.log("hey", post)
+    const user = JSON.parse(localStorage.getItem("user")); 
+    const res = await axios.put(API_URL + "/posts/" + post.id, post, {
         headers: {
             authorization: user?.token
         }
-    });
-    console.log(res.data)
+    }) 
+    
+    console.log("hey", res.data)
     return res.data
 };
+
 
 const comment = async (_id) => {
     const user = JSON.parse(localStorage.getItem("user"));

@@ -1,6 +1,8 @@
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   deletePost,
+  getById,
   like,
   unLike,
   updatePost,
@@ -12,14 +14,22 @@ import {
   EditOutlined,
 } from "@ant-design/icons";
 import "./Post.scss";
+import EditModel from "./EditModel/EditModel";
 
 const Post = () => {
   const { posts } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state.auth);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
   const API_URL = "http://localhost:8787/";
 
-  const author = user.user.postIds;
+  // const author = user.user.postIds;
+
+  const showModal = (_id) => {
+   
+    dispatch(getById(_id));
+    setIsModalVisible(true);
+  };
 
   const post = posts.map((post) => {
     const isAlreadyLiked = post.likes?.includes(user?.user._id);
@@ -30,21 +40,16 @@ const Post = () => {
           <div className="title-body">
             <h3>{post.title}</h3>
             <p>{post.body}</p>
-           
           </div>
 
-          {console.log(API_URL + "imagesmulter/" + post.image_path)}
+          
           <div className="image">
             <img src={API_URL + post.image_path} alt="" />
           </div>
         </div>
         <div className="delete-edit-like">
-          <button onClick={() => dispatch(deletePost(post._id))}>
-            <DeleteOutlined />
-          </button>
-          <button onClick={() => dispatch(updatePost(post._id))}>
-            <EditOutlined />
-          </button>
+          <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
+          <EditOutlined onClick={() => showModal(post._id)} />
           <span className="wish">likes: {post.likes?.length}</span>
           {isAlreadyLiked ? (
             <HeartFilled onClick={() => dispatch(unLike(post._id))} />
@@ -64,7 +69,12 @@ const Post = () => {
     );
   });
 
-  return <div className="post">{post}</div>;
+  return (
+    <div className="post">
+      {post}
+      <EditModel visible={isModalVisible} setVisible={setIsModalVisible} />
+    </div>
+  );
 };
 
 export default Post;

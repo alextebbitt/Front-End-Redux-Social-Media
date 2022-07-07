@@ -10,7 +10,6 @@ const CreatePost = () => {
   function OnCreatePost(e) {
     e.preventDefault();
     const formData = new FormData();
-    console.log("hey", e.target.image.files[0].name);
     if (e.target.image.files[0]) formData.set("image", e.target.image.files[0]);
     formData.set("title", e.target.title.value);
 

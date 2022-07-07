@@ -7,7 +7,7 @@ import "./Profile.scss";
 const Profile = () => {
   //  const { posts } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state.auth);
-  console.log(user.user);
+  
   const userPost = user.user.postIds.map((postids) => {
     return (
       <div>
