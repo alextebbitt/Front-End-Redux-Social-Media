@@ -6,12 +6,15 @@ import {
   resetMessage,
 } from "../../../../features/posts/postsSlice";
 import { useDispatch } from "react-redux";
+import { reset } from "../../../../features/auth/authSlice";
 
 const EditModel = ({ visible, setVisible }) => {
   const { TextArea } = Input;
   const dispatch = useDispatch();
   const [form] = Form.useForm();
-  const { post, message } = useSelector((state) => state.posts);
+  const { post, message, isSuccess, isError } = useSelector(
+    (state) => state.posts
+  );
 
   useEffect(() => {
     const postToEdit = {
@@ -21,12 +24,17 @@ const EditModel = ({ visible, setVisible }) => {
   }, [post]);
 
   useEffect(() => {
-    if (message) {
+    if (isError) {
       notification.error({ message: "Error", description: message });
     }
-
-    dispatch(resetMessage());
-  }, [message]);
+    if (isSuccess) {
+      notification.success({
+        message: "Success",
+        description: message,
+      });
+    }
+    dispatch(reset());
+  }, [message, isSuccess, isError]);
 
   const onFinish = (values) => {
     const postWithId = { ...values, id: post._id };
