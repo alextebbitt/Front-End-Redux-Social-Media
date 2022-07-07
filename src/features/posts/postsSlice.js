@@ -64,12 +64,15 @@ export const createPost = createAsyncThunk("posts/", async (postData) => {
     }
 });
 
-export const updatePost = createAsyncThunk("posts/update", async (data) => {
+export const updatePost = createAsyncThunk("posts/update", async (data, thunkAPI) => {
     try {
         
         return await postsService.updatePost(data);
     } catch (error) {
-        console.error(error)
+        console.log(error)
+        const message = error.response.data.message;
+        return thunkAPI.rejectWithValue(message);
+        // console.error(error)
     }
 });
 
@@ -137,8 +140,12 @@ export const postsSlice = createSlice({
                     return post;
                 });
                 state.posts = posts;
+            })
+            .addCase(updatePost.rejected, (state, action) => {
+                state.isError = true;
+                state.message = action.payload;
             });
-
+ 
     },
 
 });
