@@ -3,7 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
 import { notification, Avatar, } from "antd";
-import { LogoutOutlined, HomeOutlined} from "@ant-design/icons";
+import {
+  LogoutOutlined,
+  HomeOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 import { useState } from "react";
 import './Header.scss';
 import Logo3 from "../../assets/logo3.png";
@@ -35,9 +39,16 @@ const Header = () => {
     <nav>
       <div className="topnav">
         <img src={Logo3} height="80px" alt="Girl in a jacket"></img>
-        
-        <div>
-          <input onKeyUp={handleChange} placeholder="Search post" name="text" />
+
+        <div className="headerstuff">
+          <div className="searchbar">
+            <SearchOutlined/>
+            <input className="inputsearch"
+              onKeyUp={handleChange}
+              placeholder="Search post"
+              name="text"
+            />
+          </div>
           <span>
             <Link to="/">
               <HomeOutlined />
