@@ -26,7 +26,6 @@ const Post = () => {
   // const author = user.user.postIds;
 
   const showModal = (_id) => {
-   
     dispatch(getById(_id));
     setIsModalVisible(true);
   };
@@ -37,16 +36,17 @@ const Post = () => {
     return (
       <div className="container" key={post._id}>
         <div className="title-body-image">
-          <div className="image">
-            <img src={API_URL + post.image_path} alt=""  />
-          </div>
+          {post.image_path && (
+            <div className="image">
+              <img src={API_URL + post.image_path} alt="" />
+            </div>
+          )}
           <div className="title-body">
             <h3>{post.title}</h3>
             <p>{post.body}</p>
           </div>
         </div>
 
-          
         <div className="delete-edit-like">
           <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
           <EditOutlined onClick={() => showModal(post._id)} />
