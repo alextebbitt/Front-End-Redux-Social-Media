@@ -22,20 +22,23 @@ const Profile = () => {
   const { user } = useSelector((state) => state.auth);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
+   const API_URL = "http://localhost:8787/";
 
-  const userPost = user.user.postIds.map((postids) => {
+ const showModal = (_id) => {
+   dispatch(getById(_id));
+   setIsModalVisible(true);
+ };
+
+  const userPost = user.user.postIds.map((post) => {
+    
     const isAlreadyLiked = post.likes?.includes(user?.user._id);
 
-    const showModal = (_id) => {
-      dispatch(getById(_id));
-      setIsModalVisible(true);
-    };
 
     return (
-      <div className="containerposts">
+      <div className="containerposts" key={user.user.postids} >
         <div className="title-and-posts">
-          <h2>{postids.title}</h2>
-          <p>{postids.body}</p>
+          <h2>{post.title}</h2>
+          <p>{post.body}</p>
         </div>
         <div className="image">
           <img src={API_URL + post.image_path} alt="" />

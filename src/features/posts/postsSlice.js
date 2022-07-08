@@ -118,6 +118,7 @@ export const postsSlice = createSlice({
             .addCase(deletePost.fulfilled, (state, action) => {
                 state.posts = state.posts.filter(
                     (post) => post._id !== action.payload.post._id);
+                state.isError = false;
                 state.message = action.payload.message
             })
             .addCase(like.fulfilled, (state, action) => {
