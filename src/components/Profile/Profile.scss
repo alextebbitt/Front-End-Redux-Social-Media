@@ -1,4 +1,5 @@
 @import "../../colors.scss";
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
 
 .name-email {
     display: flex;
@@ -6,7 +7,26 @@
     border: solid;
     background-color: $yellow;
 }
-
+.yourprofile, .yourposts {
+    font-family: "pathway Gothic One";
+    font-size: 40px;
+}
+.containerposts{
+     
+    flex-wrap: wrap;
+       border-bottom: solid;
+       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.9);
+     transition: 0.3s;
+       width: 60%;
+       padding-top: 15px;
+       margin: 5rem;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+}
+.title-and-post{
+}
 // .posts {
 //     display: flex;
 // }

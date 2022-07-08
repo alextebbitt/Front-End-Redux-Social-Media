@@ -19,7 +19,7 @@ const Admin = () => {
     return <h1>Loading posts...</h1>;
   }
   return (
-    <div className="container">
+    <div className="containeradmin">
       <h1>Admin</h1>
       <div className="posts-admin">
         <PostAdmin />

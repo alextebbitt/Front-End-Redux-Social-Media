@@ -2,13 +2,14 @@
 .register-form {
     padding-top: 40px;
     display: flex;
-    
+    width: 700px;
     justify-content: center;
     flex-direction: column;
     border: solid;
     border-color: aliceblue;
-    margin: 300px;
+    
     margin-top: 0;
+    margin-left: 0;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.9);
   transition: 0.3s;
     
@@ -25,5 +26,15 @@
     border-radius: 2rem;
 }
 .button-signup:hover {
-    background-color: green;
+    background-color: $yellow;
+}
+
+.registerpage {
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.imagelogo{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.9);
+  transition: 0.3s;
 }

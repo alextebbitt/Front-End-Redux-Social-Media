@@ -32,15 +32,17 @@ const Profile = () => {
     };
 
     return (
-      <div>
-        <p>{postids.title}</p>
-        <p>{postids.body}</p>
+      <div className="containerposts">
+        <div className="title-and-posts">
+          <h2>{postids.title}</h2>
+          <p>{postids.body}</p>
+        </div>
         <div className="image">
           <img src={API_URL + post.image_path} alt="" />
         </div>
         <div className="delete-edit-like">
           <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
-          <EditOutlined onClick={() => showModal(post._id)} />
+          <EditOutlined onClick={() => showModal(updatePost.post._id)} />
           <span className="wish">likes: {post.likes?.length}</span>
           {isAlreadyLiked ? (
             <HeartFilled onClick={() => dispatch(unLike(post._id))} />
@@ -69,14 +71,14 @@ const Profile = () => {
 
   return (
     <div>
-      <h1>Your Profile</h1>
+      <h1 className="yourprofile">Your Profile</h1>
       <div className="name-email">
         <h2>Name: {user.user.name}</h2>
         <h2>Email: {user.user.email}</h2>
       </div>
 
       <div className="posts">
-        <h2>Your posts:</h2>
+        <h2 className="yourposts">Your posts:</h2>
         {userPost}
       </div>
     </div>
