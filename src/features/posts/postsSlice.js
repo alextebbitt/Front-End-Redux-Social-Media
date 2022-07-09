@@ -36,9 +36,12 @@ export const getPostByName = createAsyncThunk("posts/getPostByName", async (post
 
 export const deletePost = createAsyncThunk("posts/deletePost", async (id, thunkAPI) => {
     try {
-        return await postsService.deletePost(id);
+        let action = await postsService.deletePost(id);
+        if (action.post == null) {
+            return thunkAPI.rejectWithValue(action)
+        }
+        return action
     } catch (error) {
-       // console.error(error);
         console.log(error.response.data)
         const message = error.response.data;
         return thunkAPI.rejectWithValue(message);
@@ -118,8 +121,14 @@ export const postsSlice = createSlice({
             .addCase(deletePost.fulfilled, (state, action) => {
                 state.posts = state.posts.filter(
                     (post) => post._id !== action.payload.post._id);
+                state.isSuccess = true;
                 state.isError = false;
                 state.message = action.payload.message
+            })
+            .addCase(deletePost.rejected, (state, action) => {
+                state.isError = true
+                state.isSuccess = false;
+                state.message = action.payload.message;
             })
             .addCase(like.fulfilled, (state, action) => {
                 const posts = state.posts.map((post) => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   deletePost,
@@ -15,15 +15,26 @@ import {
 } from "@ant-design/icons";
 import "./Post.scss";
 import EditModel from "./EditModel/EditModel";
-
+import { notification } from "antd";
 const Post = () => {
-  const { posts } = useSelector((state) => state.posts);
+  const { posts, message, isSuccess, isError } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state.auth);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
   const API_URL = "http://localhost:8787/";
 
   // const author = user.user.postIds;
+
+useEffect(() => {
+  if (isError) {
+    notification.error({message: "Error", description: message});
+  }
+if (isSuccess) {
+  notification.success({ message: "Success", description: message});
+}
+ 
+}, [message, isError, isSuccess])
+
 
   const showModal = (_id) => {
     dispatch(getById(_id));
@@ -36,11 +47,11 @@ const Post = () => {
     return (
       <div className="container" key={post._id}>
         <div className="title-body-image">
-          {post.image_path && (
+          {post.image_path && 
             <div className="image">
               <img src={API_URL + post.image_path} alt="" />
             </div>
-          )}
+          }
           <div className="title-body">
             <h3>{post.title}</h3>
             <p>{post.body}</p>

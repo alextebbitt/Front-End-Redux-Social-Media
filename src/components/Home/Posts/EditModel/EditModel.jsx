@@ -23,18 +23,6 @@ const EditModel = ({ visible, setVisible }) => {
     form.setFieldsValue(postToEdit);
   }, [post]);
 
-  useEffect(() => {
-    if (isError) {
-      notification.error({ message: "Error", description: message });
-    }
-    if (isSuccess) {
-      notification.success({
-        message: "Success",
-        description: message,
-      });
-    }
-    dispatch(reset());
-  }, [message, isSuccess, isError]);
 
   const onFinish = (values) => {
     const postWithId = { ...values, id: post._id };

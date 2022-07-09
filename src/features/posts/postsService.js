@@ -58,7 +58,7 @@ const createPost = async (postData) => {
             authorization: user?.token
         }
     });
-    console.log(res.data)
+    console.log("recieved data" + res.data)
     return res.data
 };
 

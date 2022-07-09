@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Spin } from "antd";
+import Post from "../Home/Posts/Post";
 import {
   HeartOutlined,
   HeartFilled,
@@ -18,8 +19,8 @@ import "./Profile.scss";
 const API_URL = "http://localhost:8787/";
 
 const Profile = () => {
-  const { post } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state.auth);
+var posts = useSelector((state) => state.posts);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
    const API_URL = "http://localhost:8787/";
@@ -29,45 +30,9 @@ const Profile = () => {
    setIsModalVisible(true);
  };
 
-  const userPost = user.user.postIds.map((post) => {
-    
-    const isAlreadyLiked = post.likes?.includes(user?.user._id);
-
-
-    return (
-      <div className="containerposts" key={user.user.postids} >
-        <div className="title-and-posts">
-          <h2>{post.title}</h2>
-          <p>{post.body}</p>
-        </div>
-        <div className="image">
-          <img src={API_URL + post.image_path} alt="" />
-        </div>
-        <div className="delete-edit-like">
-          <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
-          <EditOutlined onClick={() => showModal(updatePost.post._id)} />
-          <span className="wish">likes: {post.likes?.length}</span>
-          {isAlreadyLiked ? (
-            <HeartFilled onClick={() => dispatch(unLike(post._id))} />
-          ) : (
-            <HeartOutlined onClick={() => dispatch(like(post._id))} />
-          )}
-          {/* {author.includes(post._id) ? (
-          <button onClick={() => dispatch(deletePost(post._id))}>X</button>
-        ) : null} */}
-          {/* {author.includes(post._id) ? (
-          <button onClick={() => dispatch(updatePost(post._id))}>
-            EditPost
-          </button>
-        ) : null} */}
-        </div>
-      </div>
-    );
-  });
-
-  //  if (user.user_id === post.userId) {
-  //    <div>{post}</div>;
-
+ posts = user.user.postIds;
+//  const userPost = user.user.postIds.map((post) => {})
+  
   if (!user) {
     return <Spin />;
   }
@@ -82,7 +47,7 @@ const Profile = () => {
 
       <div className="posts">
         <h2 className="yourposts">Your posts:</h2>
-        {userPost}
+        <Post/>
       </div>
     </div>
   );
