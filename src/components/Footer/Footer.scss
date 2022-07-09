@@ -1,0 +1,47 @@
+@import "../../colors.scss";
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
+
+.copy {
+  color: $yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  font-size: 30px;
+  
+  font-family: "pathway Gothic One";
+}
+
+.logos {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   padding-bottom: 1rem;
+  
+  gap: 2rem;
+  * {
+    color: $yellow;
+    font-size: 35px;
+  }
+}
+  .logos2 {
+   margin-right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   padding-bottom: 1rem;
+  
+  gap: 2rem;
+  * {
+    color: $yellow;
+    font-size: 35px;
+  }
+}
+.bigcontainer {
+    display: flex;
+     background-color: $mid;
+    justify-content: space-between;
+    
+}

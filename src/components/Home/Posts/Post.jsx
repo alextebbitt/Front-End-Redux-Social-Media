@@ -6,6 +6,7 @@ import {
   like,
   unLike,
   updatePost,
+  reset
 } from "../../../features/posts/postsSlice";
 import {
   HeartOutlined,
@@ -16,6 +17,7 @@ import {
 import "./Post.scss";
 import EditModel from "./EditModel/EditModel";
 import { notification } from "antd";
+import { createAction } from "@reduxjs/toolkit";
 const Post = () => {
   const { posts, message, isSuccess, isError } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state.auth);
@@ -31,8 +33,9 @@ useEffect(() => {
   }
 if (isSuccess) {
   notification.success({ message: "Success", description: message});
+  
 }
- 
+dispatch(reset());
 }, [message, isError, isSuccess])
 
 

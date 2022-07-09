@@ -98,6 +98,7 @@ export const postsSlice = createSlice({
     initialState,
     reducers: {
         reset: (state) => {
+           
             state.isLoading = false;
             state.isSuccess = false;
             state.isError = false;
@@ -121,6 +122,7 @@ export const postsSlice = createSlice({
             .addCase(deletePost.fulfilled, (state, action) => {
                 state.posts = state.posts.filter(
                     (post) => post._id !== action.payload.post._id);
+                 
                 state.isSuccess = true;
                 state.isError = false;
                 state.message = action.payload.message
@@ -153,7 +155,6 @@ export const postsSlice = createSlice({
             })
             .addCase(updatePost.fulfilled, (state, action) => {
                 const posts = state.posts.map((post) => {
-                    // console.log(posts)
                     if (post._id === action.payload.post._id) {
                         post = action.payload.post;
                     }

@@ -14,6 +14,7 @@ import "antd/dist/antd.css";
 import PrivateZone from './guards/PrivateZone';
 import AdminZone from './guards/AdminZone';
 import NotFound from './components/NotFound/NotFound';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/admin" element={<AdminZone><Admin /></AdminZone>} />
           <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer/>
       </BrowserRouter>
     </div>
   );
