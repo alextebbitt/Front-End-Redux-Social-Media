@@ -15,6 +15,7 @@ import PrivateZone from './guards/PrivateZone';
 import AdminZone from './guards/AdminZone';
 import NotFound from './components/NotFound/NotFound';
 import Footer from './components/Footer/Footer';
+import SearchUser from './components/SearchUser/SearchUser';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           />
           <Route path="/post/id/:_id" element={<PostDetail />} />
           <Route path="/search/:postName" element={<Search />} />
+          <Route path="/searchuser/:userName" element={<SearchUser />} />
           <Route path="/admin" element={<AdminZone><Admin /></AdminZone>} />
           <Route path="*" element={<NotFound />} />
       </Routes>

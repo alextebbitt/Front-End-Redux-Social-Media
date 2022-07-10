@@ -45,6 +45,15 @@ export const getInfo = createAsyncThunk("auth/getInfo", async () => {
     }
 });
 
+export const getUserByName = createAsyncThunk("auth/getUserByName", async (userName) => {
+
+    try {
+        return await authService.getUserByName(userName);
+    } catch (error) {
+        console.error(error);
+    }
+});
+
 export const authSlice = createSlice({
 
     name: "auth",
@@ -80,7 +89,12 @@ export const authSlice = createSlice({
             })
             .addCase(getInfo.fulfilled, (state, action) => {
                  state.user = action.payload;
-             });
+             })
+            .addCase(getUserByName.fulfilled, (state, action) => {
+
+            state.user = action.payload;
+
+        });
     },
 
 });

@@ -42,11 +42,19 @@ const getInfo = async () => {
     return res.data
 }
 
+const getUserByName = async (name) => {
+
+    const res = await axios.get(API_URL + "/search/" + name);
+    return res.data;
+
+};
+
 const authService = {
     register,
     login,
     logout,
-    getInfo
+    getInfo,
+    getUserByName
 };
 
 export default authService;
