@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { Button, Modal, Form, Input, notification } from "antd";
-import {
-  comment,
-  resetMessage,
-  getById,
-} from "../../../../features/posts/postsSlice";
+import { Button, Modal, Form, Input } from "antd";
+import {comment} from "../../../../features/posts/postsSlice";
 import { useDispatch } from "react-redux";
 
 const CommentModel = ({ isModalVisible, setIsModalVisible }) => {
@@ -37,9 +33,10 @@ const CommentModel = ({ isModalVisible, setIsModalVisible }) => {
       footer={[]}
     >
 
-      {post?.comments.map((comment) => {
+      {post?.comments?.map((comment) => {
         return <div>{comment.comment}</div>;
       })}
+
 
        <Form onFinish={onFinish} form={form}>
         <Form.Item label="Comment" name="body">

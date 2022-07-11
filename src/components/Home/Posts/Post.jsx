@@ -70,9 +70,7 @@ const Post = () => {
             <p>{post.body}</p>
           </div>
         </div>
-        {/* <div>
-          <p>{post.comments.comment}</p>
-        </div> */}
+       
         <div className="delete-edit-like">
           <MessageOutlined onClick={() => showModalComment(post._id)} />
           <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
