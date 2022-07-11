@@ -6,7 +6,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 1rem;
   padding-top: 1rem;
   font-size: 30px;
   
@@ -44,4 +43,39 @@
      background-color: $mid;
     justify-content: space-between;
     
+}
+.searchuserbardiv{
+background-color: $yellow;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+padding-top: 15px;
+padding-bottom: 15px;
+
+}
+
+.searchuserbarinput{
+    outline: none;
+      border: none;
+      flex: 1;
+      padding: 0 1rem;
+      background-color: transparent;
+      
+    }
+    .otherdiv {
+        background-color: white;
+    display: flex;
+    width: 20rem;
+    align-items: center;
+    padding: 0.3rem;
+    border-radius: 25rem;
+    border: none;
+}
+.topdiv{
+     
+ 
+  text-decoration: none;
+  font-size: 24px;
+  align-items: flex-end;
 }

@@ -6,6 +6,7 @@ import {
   TwitterOutlined,
   YoutubeOutlined,
   InstagramOutlined,
+  SearchOutlined
 } from "@ant-design/icons";
 import "./Footer.scss";
 
@@ -21,8 +22,18 @@ console.log("this is test", text)
 };
 
   return (
-    <div className='searchuserbar'>
-      <input onKeyUp={handleChange} placeholder="Search user" name="text" />
+    <div className="topdiv">
+      <div className="searchuserbardiv">
+        <div className="otherdiv">
+          <SearchOutlined />
+          <input
+            className="searchuserbarinput"
+            onKeyUp={handleChange}
+            placeholder="Search user"
+            name="text"
+          />
+        </div>
+      </div>
       <div className="bigcontainer">
         <div className="logos">
           <a href="https://www.facebook.com" target="_blank">
