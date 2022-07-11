@@ -8,12 +8,12 @@ const PostAdmin = () => {
 
   const post = posts.map((post) => {
     return (
-      <div className="post" key={post._id}>
-        <p>{post.title}</p>
+      <div className="post-admin" key={post._id}>
+        <h2>{post.title}</h2>
         <p>{post.body}</p>
 
-        <button onClick={() => dispatch(deletePost(post._id))}>X</button>
-        <div className="image">
+        <button onClick={() => dispatch(deletePost(post._id))}>Delete post</button>
+        <div className="image-admin">
           <img src={API_URL + post.image_path} alt="" />
         </div>
       </div>

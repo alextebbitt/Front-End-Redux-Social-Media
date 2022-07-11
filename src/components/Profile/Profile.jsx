@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+
+import userpic2 from "../../assets/userpic2.png";
+
 import { useSelector, useDispatch } from "react-redux";
 import { Spin } from "antd";
 import Post from "../Home/Posts/Post";
@@ -18,10 +21,10 @@ import {
   getById,
   like,
   unLike,
-  updatePost,
   reset
 } from "../../features/posts/postsSlice";
 import "./Profile.scss";
+import { getInfo } from "../../features/auth/authSlice";
 
 const Profile = () => {
  
@@ -35,15 +38,15 @@ const Profile = () => {
    const API_URL = "http://localhost:8787/";
 
 
-    // useEffect(() => {
-    //   dispatch(reset());
-    //   if (isError) {
-    //     notification.error({ message: "Error", description: message });
-    //   }
-    //   if (isSuccess) {
-    //     notification.success({ message: "Success", description: message });
-    //   }
-    // }, [message, isError, isSuccess]);
+    useEffect(() => {
+      if (isError) {
+        notification.error({ message: "Error", description: message });
+      }
+      if (isSuccess) {
+        notification.success({ message: "Success", description: message });
+      }
+      dispatch(getInfo());
+    }, [message, isError, isSuccess]);
 
  const showModal = (_id) => {
    dispatch(getById(_id));
@@ -64,7 +67,6 @@ function filterByUserId (id) {
 
 const filteredPosts = posts.filter(filterByUserId);
 const post = filteredPosts.map((post) => {
-  debugger;
   const isAlreadyLiked = post.likes?.includes(user?.user._id);
   return (
     <div className="container" key={post._id}>
@@ -102,10 +104,19 @@ const post = filteredPosts.map((post) => {
     </div>
   );
 });
-
+if (!user) {
+  return <Spin />;
+}
   return (
     <div>
       <h1 className="yourprofile">Your Profile</h1>
+      <div className="selectfile">
+      <img src={userpic2} alt="hhhhh" className="userpic-image" />
+        <label className="Select-a-file" for="myfile">
+          Upload profile pic:
+        </label>
+        <input type="file" className="myfile" name="image" />
+      </div>
       <div className="name-email">
         <h2>Name: {user.user.name}</h2>
         <h2>Email: {user.user.email}</h2>
