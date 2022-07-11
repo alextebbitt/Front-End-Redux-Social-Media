@@ -6,14 +6,15 @@ import {
   like,
   unLike,
   updatePost,
-  reset, comment
+  reset,
+  comment,
 } from "../../../features/posts/postsSlice";
 import {
   HeartOutlined,
   HeartFilled,
   DeleteOutlined,
   EditOutlined,
-  MessageOutlined
+  MessageOutlined,
 } from "@ant-design/icons";
 import "./Post.scss";
 import EditModel from "./EditModel/EditModel";
@@ -21,33 +22,39 @@ import CommentModel from "./CommentModel/CommentModel";
 import { notification } from "antd";
 import { createAction } from "@reduxjs/toolkit";
 const Post = () => {
-  const { posts, message, isSuccess, isError } = useSelector((state) => state.posts);
+  const { posts, message, isSuccess, isError } = useSelector(
+    (state) => state.posts
+  );
   const { user } = useSelector((state) => state.auth);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible2, setIsModalVisible2] = useState(false);
+
   const dispatch = useDispatch();
   const API_URL = "http://localhost:8787/";
 
   // const author = user.user.postIds;
 
-useEffect(() => {
-  if (isError) {
-    notification.error({message: "Error", description: message});
-  }
-if (isSuccess) {
-  notification.success({ message: "Success", description: message});
-  
-}
-dispatch(reset());
-}, [message, isError, isSuccess])
-
+  useEffect(() => {
+    if (isError) {
+      notification.error({ message: "Error", description: message });
+    }
+    if (isSuccess) {
+      notification.success({ message: "Success", description: message });
+    }
+    dispatch(reset());
+  }, [message, isError, isSuccess]);
 
   const showModal = (_id) => {
     dispatch(getById(_id));
     setIsModalVisible(true);
   };
 
+  const showModalComment = (_id) => {
+    dispatch(getById(_id));
+    setIsModalVisible2(true);
+  };
+
   const post = posts.map((post) => {
-    console.log(post)
     const isAlreadyLiked = post.likes?.includes(user?.user._id);
 
     return (
@@ -67,7 +74,7 @@ dispatch(reset());
           <p>{post.comments.comment}</p>
         </div> */}
         <div className="delete-edit-like">
-          <MessageOutlined onClick={() => showModal(post._id)} />
+          <MessageOutlined onClick={() => showModalComment(post._id)} />
           <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
           <EditOutlined onClick={() => showModal(post._id)} />
           <span className="wish">likes: {post.likes?.length}</span>
@@ -93,7 +100,10 @@ dispatch(reset());
     <div className="post">
       {post}
       <EditModel visible={isModalVisible} setVisible={setIsModalVisible} />
-      <CommentModel visible={isModalVisible} setVisible={setIsModalVisible} />
+      <CommentModel
+        isModalVisible={isModalVisible2}
+        setIsModalVisible={setIsModalVisible2}
+      />
     </div>
   );
 };

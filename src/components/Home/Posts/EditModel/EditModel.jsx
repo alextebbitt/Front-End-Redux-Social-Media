@@ -33,27 +33,32 @@ const EditModel = ({ visible, setVisible }) => {
   const handleCancel = () => {
     setVisible(false);
   };
+
+  
   return (
-    <Modal
-      title="Edit Post"
-      visible={visible}
-      onCancel={handleCancel}
-      footer={[]}
-    >
-      <Form onFinish={onFinish} form={form}>
-        <Form.Item label="Post Title" name="title">
-          <Input placeholder="Post title" />
-        </Form.Item>
-        <Form.Item label="TextArea" name="body">
-          <TextArea rows={4} />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-    </Modal>
+    <div>
+      
+      <Modal
+        title="Edit Post"
+        visible={visible}
+        onCancel={handleCancel}
+        footer={[]}
+      >
+        <Form onFinish={onFinish} form={form}>
+          <Form.Item label="Post Title" name="title">
+            <Input placeholder="Post title" />
+          </Form.Item>
+          <Form.Item label="TextArea" name="body">
+            <TextArea rows={4} />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
+    </div>
   );
 };
 

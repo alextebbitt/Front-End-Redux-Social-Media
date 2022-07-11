@@ -4,45 +4,55 @@ import { Button, Modal, Form, Input, notification } from "antd";
 import {
   comment,
   resetMessage,
+  getById,
 } from "../../../../features/posts/postsSlice";
 import { useDispatch } from "react-redux";
 
-const CommentModel = ({ visible, setVisible }) => {
+const CommentModel = ({ isModalVisible, setIsModalVisible }) => {
+    console.log("visible", isModalVisible)
   const { post } = useSelector((state) => state.posts);
+  console.log("este es el post", post)
   const { TextArea } = Input;
   const dispatch = useDispatch();
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    const newComment = { _id: post._id, comment:document.getElementById('commentValue').value };
+    const newComment = {
+      _id: post._id,
+      comment: document.getElementById("commentValue").value,
+    };
     dispatch(comment(newComment));
-    setVisible(false);
+    // setIsModalVisible(false);
   };
 
   const handleCancel = () => {
-    setVisible(false);
+    setIsModalVisible(false);
   };
-console.log("comments", post)
+
   return (
-      <Modal
-      
+    <Modal
       title="Comment"
-      visible={visible}
+      visible={isModalVisible}
       onCancel={handleCancel}
       footer={[]}
     >
-      <Form onFinish={onFinish} form={form}>
-        <Form.Item label="TextArea" name="body">
-          <TextArea rows={4} id="commentValue"/>
+
+      {post?.comments.map((comment) => {
+        return <div>{comment.comment}</div>;
+      })}
+
+       <Form onFinish={onFinish} form={form}>
+        <Form.Item label="Comment" name="body">
+          <TextArea rows={4} id="commentValue" />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
         </Form.Item>
-      </Form>
+      </Form> 
     </Modal>
   );
 };
 
-export default CommentModel
+export default CommentModel;
