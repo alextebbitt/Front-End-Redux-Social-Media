@@ -6,16 +6,18 @@ import {
   like,
   unLike,
   updatePost,
-  reset
+  reset, comment
 } from "../../../features/posts/postsSlice";
 import {
   HeartOutlined,
   HeartFilled,
   DeleteOutlined,
   EditOutlined,
+  MessageOutlined
 } from "@ant-design/icons";
 import "./Post.scss";
 import EditModel from "./EditModel/EditModel";
+import CommentModel from "./CommentModel/CommentModel";
 import { notification } from "antd";
 import { createAction } from "@reduxjs/toolkit";
 const Post = () => {
@@ -51,18 +53,21 @@ dispatch(reset());
     return (
       <div className="container" key={post._id}>
         <div className="title-body-image">
-          {post.image_path && 
+          {post.image_path && (
             <div className="image">
               <img src={API_URL + post.image_path} alt="" />
             </div>
-          }
+          )}
           <div className="title-body">
             <h3>{post.title}</h3>
             <p>{post.body}</p>
           </div>
         </div>
-
+        {/* <div>
+          <p>{post.comments.comment}</p>
+        </div> */}
         <div className="delete-edit-like">
+          <MessageOutlined onClick={() => showModal(post._id)} />
           <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
           <EditOutlined onClick={() => showModal(post._id)} />
           <span className="wish">likes: {post.likes?.length}</span>
@@ -88,6 +93,7 @@ dispatch(reset());
     <div className="post">
       {post}
       <EditModel visible={isModalVisible} setVisible={setIsModalVisible} />
+      <CommentModel visible={isModalVisible} setVisible={setIsModalVisible} />
     </div>
   );
 };

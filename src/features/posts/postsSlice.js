@@ -85,9 +85,11 @@ export const updatePost = createAsyncThunk("posts/update", async (data, thunkAPI
     }
 });
 
-export const comment = createAsyncThunk("posts/comments", async (_id) => {
+export const comment = createAsyncThunk("posts/comments", async (comment) => {
+    console.log("this is id",comment)
+    
     try {
-        return await postsService.comment(_id);
+        return await postsService.comment(comment);
     } catch (error) {
         console.error(error)
     }
@@ -170,7 +172,10 @@ export const postsSlice = createSlice({
                 state.isSuccess = false;
                 state.message = action.payload;
 
-            });
+            })
+            .addCase(comment.fulfilled, (state, action) => {
+
+            })
 
     },
 

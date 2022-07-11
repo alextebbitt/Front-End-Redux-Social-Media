@@ -13,8 +13,8 @@ const getById = async (_id) => {
 }
 
 const getPostByName = async (postTitle) => {
-const res = await axios.get(API_URL + "/posts/search/" + postTitle);
-return res.data
+    const res = await axios.get(API_URL + "/posts/search/" + postTitle);
+    return res.data
 }
 
 const deletePost = async (id) => {
@@ -57,32 +57,29 @@ const createPost = async (postData) => {
             authorization: user?.token
         }
     });
-    
+
     return res.data
 };
 
 const updatePost = async (post) => {
-    
-    const user = JSON.parse(localStorage.getItem("user")); 
+
+    const user = JSON.parse(localStorage.getItem("user"));
     const res = await axios.put(API_URL + "/posts/" + post.id, post, {
         headers: {
             authorization: user?.token
         }
-    }) 
-    
-    
+    })
+
+
     return res.data
 };
 
 
-const comment = async (_id) => {
+const comment = async (comment) => {
     const user = JSON.parse(localStorage.getItem("user"));
-    const res = await axios.put(API_URL + "/posts/comments/", _id, {
-        headers: {
-            authorization: user?.token
-        }
-    });
-    
+    const res = await axios.put(API_URL + "/posts/comments/" + comment._id, comment, { headers: { authorization: user?.token } });
+    console.log("this is service", comment)
+
     return res.data
 };
 

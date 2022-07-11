@@ -54,7 +54,7 @@ const post = filteredPosts.map((post) => {
           <p>{post.body}</p>
         </div>
       </div>
-
+     
       <div className="delete-edit-like">
         <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
         <EditOutlined onClick={() => showModal(post._id)} />
