@@ -42,7 +42,7 @@ export const deletePost = createAsyncThunk("posts/deletePost", async (id, thunkA
         }
         return action
     } catch (error) {
-        console.log(error.response.data)
+        
         const message = error.response.data;
         return thunkAPI.rejectWithValue(message);
     }
@@ -78,7 +78,7 @@ export const updatePost = createAsyncThunk("posts/update", async (data, thunkAPI
 
         return await postsService.updatePost(data);
     } catch (error) {
-        console.log("heeeeey", error.response.data.message)
+       
         const message = error.response.data.message;
         return thunkAPI.rejectWithValue(message);
         // console.error(error)

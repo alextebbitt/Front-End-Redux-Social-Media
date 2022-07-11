@@ -14,7 +14,6 @@ const getById = async (_id) => {
 
 const getPostByName = async (postTitle) => {
 const res = await axios.get(API_URL + "/posts/search/" + postTitle);
-console.log(res.data)
 return res.data
 }
 
@@ -58,12 +57,12 @@ const createPost = async (postData) => {
             authorization: user?.token
         }
     });
-    console.log("recieved data" + res.data)
+    
     return res.data
 };
 
 const updatePost = async (post) => {
-    console.log("hey", post)
+    
     const user = JSON.parse(localStorage.getItem("user")); 
     const res = await axios.put(API_URL + "/posts/" + post.id, post, {
         headers: {
@@ -71,7 +70,7 @@ const updatePost = async (post) => {
         }
     }) 
     
-    console.log("hey", res.data)
+    
     return res.data
 };
 
@@ -83,7 +82,7 @@ const comment = async (_id) => {
             authorization: user?.token
         }
     });
-    console.log(res.data)
+    
     return res.data
 };
 

@@ -14,7 +14,7 @@ export const register = createAsyncThunk("auth/register", async (user, thunkAPI)
     try {
         return await authService.register(user);
     } catch (error) {
-        console.log(error.response.data);
+        
         const message = error.response.data;
         return thunkAPI.rejectWithValue(message);
     }
@@ -48,6 +48,7 @@ export const getInfo = createAsyncThunk("auth/getInfo", async () => {
 export const getUserByName = createAsyncThunk("auth/getUserByName", async (userName) => {
 
     try {
+        
         return await authService.getUserByName(userName);
     } catch (error) {
         console.error(error);
@@ -92,7 +93,7 @@ export const authSlice = createSlice({
              })
             .addCase(getUserByName.fulfilled, (state, action) => {
 
-            state.user = action.payload;
+            state.user.user = action.payload[0];
 
         });
     },

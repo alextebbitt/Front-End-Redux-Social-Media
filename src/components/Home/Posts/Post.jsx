@@ -45,6 +45,7 @@ dispatch(reset());
   };
 
   const post = posts.map((post) => {
+    console.log(post)
     const isAlreadyLiked = post.likes?.includes(user?.user._id);
 
     return (

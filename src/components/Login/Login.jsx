@@ -31,7 +31,7 @@ const Login = () => {
  
   const onFinish = (values) => {
      dispatch(login(values));
-     console.log("Success:", values);
+    
    };
 
    const onFinishFailed = (errorInfo) => {

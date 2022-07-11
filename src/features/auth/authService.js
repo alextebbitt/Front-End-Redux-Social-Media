@@ -38,13 +38,13 @@ const getInfo = async () => {
             authorization: user?.token,
         },
     });
-    console.log(res.data)
+    
     return res.data
 }
 
 const getUserByName = async (name) => {
 
-    const res = await axios.get(API_URL + "/search/" + name);
+    const res = await axios.get(API_URL + "/users/search/" + name);
     return res.data;
 
 };
