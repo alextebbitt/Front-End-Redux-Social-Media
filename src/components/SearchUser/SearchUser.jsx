@@ -6,7 +6,7 @@ import { getUserByName } from '../../features/auth/authSlice';
 
 const SearchUser = () => {
     const { user } = useSelector((state) => state.auth);
-    
+    console.log(user)
     const { userName } = useParams();
     const dispatch = useDispatch();
 
@@ -15,10 +15,14 @@ const SearchUser = () => {
     }, [userName]);
 
   return (
-    
     <div className="name-email">
       <h2>Name: {user?.user.name}</h2>
       <h2>Email: {user?.user.email}</h2>
+      <h2>Role: {user?.user.role}</h2>
+      <h2>Number of Posts: {user?.user.postIds.length}</h2>
+      <h2>Followers: {user?.user.followers.length}</h2>
+      <h2>Following: {user?.user.following.length}</h2>
+      <h2>Liked posts: {user?.user.favourites.length}</h2>
     </div>
   );
 }

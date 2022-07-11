@@ -1,7 +1,10 @@
 .logo-image{
-    
+    flex-wrap: wrap;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.9);
   transition: 0.3s;
   padding-top: 30px;
   padding-bottom: 30px;
+  max-width: 100%;
+    width: 100%;
+    height: auto;
 }
