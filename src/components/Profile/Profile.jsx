@@ -34,19 +34,16 @@ const Profile = () => {
  );
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalVisible2, setIsModalVisible2] = useState(false);
+  console.log("hello", user.user.postIds)
+  const mapUser = user.user.postIds;
   const dispatch = useDispatch();
    const API_URL = "http://localhost:8787/";
 
 
     useEffect(() => {
-      if (isError) {
-        notification.error({ message: "Error", description: message });
-      }
-      if (isSuccess) {
-        notification.success({ message: "Success", description: message });
-      }
+     
       dispatch(getInfo());
-    }, [message, isError, isSuccess]);
+    }, [posts]);
 
  const showModal = (_id) => {
    dispatch(getById(_id));
@@ -61,12 +58,12 @@ const showModalComment = (_id) => {
   if (!user) {
     return <Spin />;
   }
-function filterByUserId (id) {
-  return id.userId._id === user.user._id; 
-}
+// function filterByUserId (id) {
+//   return id.userId._id === user.user._id; 
+// }
 
-const filteredPosts = posts.filter(filterByUserId);
-const post = filteredPosts.map((post) => {
+// const filteredPosts = posts.filter(filterByUserId);
+const post = mapUser.map((post) => {
   const isAlreadyLiked = post.likes?.includes(user?.user._id);
   return (
     <div className="container" key={post._id}>
