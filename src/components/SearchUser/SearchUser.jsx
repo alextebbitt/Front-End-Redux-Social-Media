@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserByName } from '../../features/auth/authSlice';
+import { getUserByName, follow, unFollow } from '../../features/auth/authSlice';
 
 const SearchUser = () => {
     const { user } = useSelector((state) => state.auth);
@@ -12,17 +12,21 @@ const SearchUser = () => {
 
     useEffect(() => {
       dispatch(getUserByName(userName));
-    }, [userName]);
+    }, [user]);
 
   return (
-    <div className="name-email">
-      <h2>Name: {user?.user.name}</h2>
-      <h2>Email: {user?.user.email}</h2>
-      <h2>Role: {user?.user.role}</h2>
-      <h2>Number of Posts: {user?.user.postIds.length}</h2>
-      <h2>Followers: {user?.user.followers.length}</h2>
-      <h2>Following: {user?.user.following.length}</h2>
-      <h2>Liked posts: {user?.user.favourites.length}</h2>
+    <div>
+      <div className="name-email">
+        <h2>Name: {user?.user.name}</h2>
+        <h2>Email: {user?.user.email}</h2>
+        <h2>Role: {user?.user.role}</h2>
+        <h2>Number of Posts: {user?.user.postIds.length}</h2>
+        <h2>Followers: {user?.user.followers.length}</h2>
+        <h2>Following: {user?.user.following.length}</h2>
+        <h2>Liked posts: {user?.user.favourites.length}</h2>
+      </div>
+      <button onClick={() => dispatch(follow(user.user._id))}>Follow </button>
+      <button onClick={() => dispatch(unFollow(user.user._id))}>Unfollow</button>
     </div>
   );
 }

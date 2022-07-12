@@ -48,13 +48,36 @@ const getUserByName = async (name) => {
     return res.data;
 
 };
+const follow = async (_id) => {
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    const res = await axios.put(API_URL + "/users/follow/" + _id, {}, {
+        headers: {
+            authorization: user?.token,
+        },
+    });
+    return res.data;
+
+};
+
+const unFollow = async (_id) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const res = await axios.put(API_URL + "/users/unfollow/" + _id, {}, {
+        headers: {
+            authorization: user?.token,
+        },
+    });
+    return res.data
+};
 
 const authService = {
     register,
     login,
     logout,
     getInfo,
-    getUserByName
+    getUserByName,
+    follow,
+    unFollow
 };
 
 export default authService;

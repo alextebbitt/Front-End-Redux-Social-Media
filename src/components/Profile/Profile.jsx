@@ -89,14 +89,6 @@ const post = mapUser.map((post) => {
         ) : (
           <HeartOutlined onClick={() => dispatch(like(post._id))} />
         )}
-        {/* {author.includes(post._id) ? (
-          <button onClick={() => dispatch(deletePost(post._id))}>X</button>
-        ) : null} */}
-        {/* {author.includes(post._id) ? (
-          <button onClick={() => dispatch(updatePost(post._id))}>
-            EditPost
-          </button>
-        ) : null} */}
       </div>
     </div>
   );

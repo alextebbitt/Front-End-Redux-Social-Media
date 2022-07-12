@@ -3,6 +3,7 @@ import authService from "./authService";
 
 const user = JSON.parse(localStorage.getItem("user"));
 const initialState = {
+    users: [],
     user: user ? user : null,
     isError: false,
     isSuccess: false,
@@ -55,6 +56,22 @@ export const getUserByName = createAsyncThunk("auth/getUserByName", async (userN
     }
 });
 
+export const follow = createAsyncThunk("auth/follow", async (_id) => {
+    try {
+        return await authService.follow(_id);
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+export const unFollow = createAsyncThunk("auth/unLike", async (_id) => {
+    try {
+        return await authService.unFollow(_id);
+    } catch (error) {
+        console.error(error);
+    }
+});
+
 export const authSlice = createSlice({
 
     name: "auth",
@@ -95,7 +112,25 @@ export const authSlice = createSlice({
 
             state.user.user = action.payload[0];
 
-        });
+            })
+            .addCase(follow.fulfilled, (state, action) => {
+                const users = state.users.map((user) => {
+                    if (user._id === action.payload.user._id) {
+                        user = action.payload.user;
+                    }
+                    return user;
+                });
+                state.users = users;
+            })
+            .addCase(unFollow.fulfilled, (state, action) => {
+                const users = state.users.map((user) => {
+                    if (user._id === action.payload.user._id) {
+                        user = action.payload.user;
+                    }
+                    return user;
+                });
+                state.users = users;
+            })
     },
 
 });

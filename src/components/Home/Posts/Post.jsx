@@ -19,7 +19,7 @@ import {
 import "./Post.scss";
 import EditModel from "./EditModel/EditModel";
 import CommentModel from "./CommentModel/CommentModel";
-import { notification, Spin } from "antd";
+import { notification } from "antd";
 import { createAction } from "@reduxjs/toolkit";
 const Post = () => {
   const { posts, message, isSuccess, isError } = useSelector(
@@ -58,44 +58,40 @@ const Post = () => {
     const isAlreadyLiked = post.likes?.includes(user?.user._id);
 
     return (
-      <>
-      {/* {!user ( <Spin/>) : ( */}
-        <div className="container" key={post._id}>
-          <div className="title-body-image">
-            {post.image_path && (
-              <div className="image">
-                <img src={API_URL + post.image_path} alt="" />
-              </div>
-            )}
-            <div className="title-body">
-              <h3>{post.title}</h3>
-              <p>{post.body}</p>
+      <div className="container" key={post._id}>
+        <div className="title-body-image">
+          {post.image_path && (
+            <div className="image">
+              <img src={API_URL + post.image_path} alt="" />
             </div>
+          )}
+          <div className="title-body">
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
           </div>
+        </div>
 
-          <div className="delete-edit-like">
-            <MessageOutlined onClick={() => showModalComment(post._id)} />
-            <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
-            <EditOutlined onClick={() => showModal(post._id)} />
-            <span className="wish">likes: {post.likes?.length}</span>
-            {isAlreadyLiked ? (
-              <HeartFilled onClick={() => dispatch(unLike(post._id))} />
-            ) : (
-              <HeartOutlined onClick={() => dispatch(like(post._id))} />
-            )}
-            {/* {author.includes(post._id) ? (
-          <button onClick={() => dispatch(deletePost(post._id))}>X</button>
+        <div className="delete-edit-like">
+          <MessageOutlined onClick={() => showModalComment(post._id)} />
+          <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
+          <EditOutlined onClick={() => showModal(post._id)} />
+          <span className="wish">likes: {post.likes?.length}</span>
+          {isAlreadyLiked ? (
+            <HeartFilled onClick={() => dispatch(unLike(post._id))} />
+          ) : (
+            <HeartOutlined onClick={() => dispatch(like(post._id))} />
+          )}
+          {/* {author.includes(post._id) ? (
+          <DeleteOutlined onClick={() => dispatch(deletePost(post._id))} />
         ) : null} */}
-            {/* {author.includes(post._id) ? (
+          {/* {author.includes(post._id) ? (
           <button onClick={() => dispatch(updatePost(post._id))}>
             EditPost
           </button>
         ) : null} */}
-          </div>
         </div>
-    {/* )} */}
-      </>
-    )
+      </div>
+    );
   });
 
   return (
