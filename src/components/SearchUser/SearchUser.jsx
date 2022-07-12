@@ -2,17 +2,32 @@ import React from 'react'
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserByName, follow, unFollow } from '../../features/auth/authSlice';
+import { getUserByName, follow, unFollow, reset } from '../../features/auth/authSlice';
+import { notification } from "antd";
 
 const SearchUser = () => {
     const { user } = useSelector((state) => state.auth);
-    console.log(user)
+    const { isError, isSuccess, message } = useSelector((state) => state.auth);
     const { userName } = useParams();
     const dispatch = useDispatch();
 
     useEffect(() => {
+      if (isError) {
+        notification.error({ message: "Error", description: message });
+      }
+      
+      if (isSuccess) {
+        notification.success({ message: "Success", description: message });
+      }
       dispatch(getUserByName(userName));
-    }, [user]);
+      
+    }, [ isError, isSuccess, message]);
+
+useEffect(() => {
+  
+  dispatch(getUserByName(userName))
+}, [user])
+
 
   return (
     <div>
