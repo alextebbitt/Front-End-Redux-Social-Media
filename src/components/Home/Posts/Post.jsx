@@ -30,19 +30,18 @@ const Post = () => {
   const [isModalVisible2, setIsModalVisible2] = useState(false);
 
   const dispatch = useDispatch();
-  const API_URL = "http://localhost:8787/";
+  const API_URL = "http://localhost:8787/"; // "https://social-media-redux.herokuapp.com/"
+    // const author = user.user.postIds;
 
-  // const author = user.user.postIds;
-
-  useEffect(() => {
-    if (isError) {
-      notification.error({ message: "Error", description: message });
-    }
-    if (isSuccess) {
-      notification.success({ message: "Success", description: message });
-    }
-    dispatch(reset());
-  }, [message, isError, isSuccess]);
+    useEffect(() => {
+      if (isError) {
+        notification.error({ message: "Error", description: message });
+      }
+      if (isSuccess) {
+        notification.success({ message: "Success", description: message });
+      }
+      dispatch(reset());
+    }, [message, isError, isSuccess]);
 
   const showModal = (_id) => {
     dispatch(getById(_id));

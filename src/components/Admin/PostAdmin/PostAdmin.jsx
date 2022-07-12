@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import { deletePost } from "../../../features/posts/postsSlice";
- const API_URL = "http://localhost:8787/";
+ const API_URL =    "http://localhost:8787/"; //"https://social-media-redux.herokuapp.com/"   
 const PostAdmin = () => {
   const { posts } = useSelector((state) => state.posts);
   const dispatch = useDispatch();

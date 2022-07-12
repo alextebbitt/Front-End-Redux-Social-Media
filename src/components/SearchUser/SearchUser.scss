@@ -1,0 +1,21 @@
+@import "../../colors.scss";
+.buttons-follow {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 1rem;
+}
+
+.follow {
+    border-radius: 2rem;
+    font-size: 30px;
+    background-color: $mid;
+}
+.unfollow {
+   border-radius: 2rem;
+    font-size: 30px; 
+    background-color: $mid;
+}
+
+.follow:hover , .unfollow:hover{
+    background-color: $yellow;
+}

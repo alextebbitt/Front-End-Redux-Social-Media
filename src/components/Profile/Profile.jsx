@@ -37,13 +37,10 @@ const Profile = () => {
   console.log("hello", user.user.postIds)
   const mapUser = user.user.postIds;
   const dispatch = useDispatch();
-   const API_URL = "http://localhost:8787/";
-
-
-    useEffect(() => {
-     
-      dispatch(getInfo());
-    }, [posts]);
+   const API_URL = "http://localhost:8787/"; //"https://social-media-redux.herokuapp.com/"
+     useEffect(() => {
+       dispatch(getInfo());
+     }, [posts]);
 
  const showModal = (_id) => {
    dispatch(getById(_id));

@@ -19,7 +19,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const [text, setText] = useState("");
-  
+
   const handleChange = (e) => {
     setText(e.target.value);
     if (e.key === "Enter") {
@@ -42,8 +42,9 @@ const Header = () => {
 
         <div className="headerstuff">
           <div className="searchbar">
-            <SearchOutlined/>
-            <input className="inputsearch"
+            <SearchOutlined />
+            <input
+              className="inputsearch"
               onKeyUp={handleChange}
               placeholder="Search post"
               name="text"
@@ -63,7 +64,9 @@ const Header = () => {
               </span>
               <span>
                 <Link to="/profile">
-                  <Avatar>{user.user.name[0]}</Avatar>
+                  <Avatar size={"large"} style={{ backgroundColor: "#feb93f" }}>
+                    {user.user.name[0]}
+                  </Avatar>
                 </Link>
               </span>
               {user.user.role === "admin" ? (

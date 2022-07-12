@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserByName, follow, unFollow, reset } from '../../features/auth/authSlice';
 import { notification } from "antd";
-
+import "./SearchUser.scss";
 const SearchUser = () => {
     const { user } = useSelector((state) => state.auth);
     const { isError, isSuccess, message } = useSelector((state) => state.auth);
@@ -40,8 +40,12 @@ useEffect(() => {
         <h2>Following: {user?.user.following.length}</h2>
         <h2>Liked posts: {user?.user.favourites.length}</h2>
       </div>
-      <button onClick={() => dispatch(follow(user.user._id))}>Follow </button>
-      <button onClick={() => dispatch(unFollow(user.user._id))}>Unfollow</button>
+      <div className='buttons-follow'>
+        <button className='follow' onClick={() => dispatch(follow(user.user._id))}>Follow </button>
+        <button className='unfollow' onClick={() => dispatch(unFollow(user.user._id))}>
+          Unfollow
+        </button>
+      </div>
     </div>
   );
 }

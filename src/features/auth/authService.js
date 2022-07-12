@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8787";
+const API_URL = "http://localhost:8787"; //"https://social-media-redux.herokuapp.com/"
 
 const register = async (userData) => {
     const res = await axios.post(API_URL + "/users", userData);

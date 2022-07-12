@@ -34,7 +34,7 @@ const CommentModel = ({ isModalVisible, setIsModalVisible }) => {
     >
 
       {post?.comments?.map((comment) => {
-        return <div>{comment.comment}</div>;
+        return <div className="commentdiv">{comment.comment}</div>;
       })}
 
 
