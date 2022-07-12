@@ -11,7 +11,10 @@ const Search = () => {
         dispatch(getPostByName(postName));
      }, [postName]);
   return (
-    <div><Post/></div>
+    
+    <div>
+      <h1>Posts</h1>
+      <Post/></div>
   )
 }
 

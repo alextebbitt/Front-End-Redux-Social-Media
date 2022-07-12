@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Button, Modal, Form, Input } from "antd";
 import {comment} from "../../../../features/posts/postsSlice";
 import { useDispatch } from "react-redux";
-
+import "./CommentModel.scss";
 const CommentModel = ({ isModalVisible, setIsModalVisible }) => {
     console.log("visible", isModalVisible)
   const { post } = useSelector((state) => state.posts);
@@ -34,7 +34,12 @@ const CommentModel = ({ isModalVisible, setIsModalVisible }) => {
     >
 
       {post?.comments?.map((comment) => {
-        return <div className="commentdiv">{comment.comment}</div>;
+        console.log("heyyyyy", post.comments)
+        return (
+          <div className="commentdiv">
+            <p>{comment.comment}</p>
+          </div>
+        );
       })}
 
 

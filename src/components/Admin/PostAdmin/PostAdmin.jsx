@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-
+import "./PostAdmin.scss";
 import { deletePost } from "../../../features/posts/postsSlice";
  const API_URL =    "http://localhost:8787/"; //"https://social-media-redux.herokuapp.com/"   
 const PostAdmin = () => {

@@ -97,11 +97,13 @@ if (!user) {
     <div>
       <h1 className="yourprofile">Your Profile</h1>
       <div className="selectfile">
-      <img src={userpic2} alt="hhhhh" className="userpic-image" />
-        <label className="Select-a-file" for="myfile">
-          Upload profile pic:
-        </label>
-        <input type="file" className="myfile" name="image" />
+        <img src={userpic2} alt="hhhhh" className="userpic-image" />
+        <div className="upload-div">
+          <label className="Select-a-file" for="myfile">
+            Upload profile pic:
+          </label>
+          <input type="file" className="myfile" name="image" />
+        </div>
       </div>
       <div className="name-email">
         <h2>Name: {user.user.name}</h2>

@@ -4,10 +4,13 @@
 .name-email {
     margin-top: 2rem;
     margin-bottom: 2rem;
+    margin-left: 60px;
     display: flex;
     flex-direction: column;
     border: solid;
     background-color: $yellow;
+    border-radius: 70px;
+    width: 60%;
 }
 .yourprofile, .yourposts {
     font-family: "pathway Gothic One";
@@ -27,16 +30,29 @@
        align-items: center;
        justify-content: center;
 }
-.avatar{
-    font-size: 700px;
-}
+
 
 .userpic-image{
     height: 250px;
+    border-radius: 100px;
+    
 }
 .selectfile {
     display: flex;
-    align-items: center;
-    justify-content: center;
+   margin-left: 100px;
+   flex-wrap: wrap;
 
+}
+.myfile{
+    
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.file-upload-button {
+    border-radius: 50px;
+
+}
+.upload-div{
+    display: flex;
+    flex-direction: column;
 }

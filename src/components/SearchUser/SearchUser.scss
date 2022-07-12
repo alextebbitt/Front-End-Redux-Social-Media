@@ -1,21 +1,53 @@
 @import "../../colors.scss";
 .buttons-follow {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: flex-end;
     padding-bottom: 1rem;
+    padding-top: 30px;
+    gap: 40px;
+    flex-wrap: wrap;
+    
 }
 
 .follow {
     border-radius: 2rem;
-    font-size: 30px;
+    font-size: 20px;
     background-color: $mid;
+    border: none;
 }
 .unfollow {
    border-radius: 2rem;
-    font-size: 30px; 
+    font-size: 20px; 
     background-color: $mid;
+    border: none;
 }
 
 .follow:hover , .unfollow:hover{
     background-color: $yellow;
+}
+.details-pic{
+    display: flex;
+}
+.image-searchuser{
+    padding-top: 10px;
+    padding-left: 40px;
+    margin-left: 80px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.user-details{
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 80px;
+    
+    background-color: $yellow;
+    border-radius: 50px;
 }
