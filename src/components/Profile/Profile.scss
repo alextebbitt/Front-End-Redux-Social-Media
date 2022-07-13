@@ -11,10 +11,14 @@
     background-color: $yellow;
     border-radius: 70px;
     width: 60%;
+    flex-wrap: wrap;
+    max-width: 100%;
 }
 .yourprofile, .yourposts {
     font-family: "pathway Gothic One";
     font-size: 40px;
+    flex-wrap: wrap;
+    max-width: 100%;
 }
 .containerposts{
      
@@ -35,12 +39,16 @@
 .userpic-image{
     height: 250px;
     border-radius: 100px;
+    flex-wrap: wrap;
+    max-width: 100%;
     
 }
 .selectfile {
     display: flex;
    margin-left: 100px;
    flex-wrap: wrap;
+   
+    max-width: 100%;
 
 }
 .myfile{
@@ -55,4 +63,12 @@
 .upload-div{
     display: flex;
     flex-direction: column;
+}
+.userdetails{
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+.bigdiv{
+    flex-wrap: wrap;
+    max-width: 100%;
 }

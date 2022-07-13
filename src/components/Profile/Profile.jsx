@@ -94,7 +94,7 @@ if (!user) {
   return <Spin />;
 }
   return (
-    <div>
+    <div className="bigdiv">
       <h1 className="yourprofile">Your Profile</h1>
       <div className="selectfile">
         <img src={userpic2} alt="hhhhh" className="userpic-image" />

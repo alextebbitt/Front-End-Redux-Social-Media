@@ -61,7 +61,7 @@ const Post = () => {
         <div className="title-body-image">
           {post.image_path && (
             <div className="image">
-              <img src={API_URL + post.image_path} alt="" />
+              <img className="imagepost" src={API_URL + post.image_path} alt="" />
             </div>
           )}
           <div className="title-body">

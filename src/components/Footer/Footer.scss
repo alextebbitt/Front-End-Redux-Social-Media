@@ -42,6 +42,8 @@
     display: flex;
      background-color: $mid;
     justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 100%;
     
 }
 .searchuserbardiv{

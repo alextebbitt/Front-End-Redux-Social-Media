@@ -7,6 +7,7 @@ import "./CommentModel.scss";
 const CommentModel = ({ isModalVisible, setIsModalVisible }) => {
     console.log("visible", isModalVisible)
   const { post } = useSelector((state) => state.posts);
+  const { user } = useSelector((state) => state.auth);
   console.log("este es el post", post)
   const { TextArea } = Input;
   const dispatch = useDispatch();
@@ -27,17 +28,29 @@ const CommentModel = ({ isModalVisible, setIsModalVisible }) => {
 
   return (
     <Modal
-      title="Comment"
+      title="Comments"
       visible={isModalVisible}
       onCancel={handleCancel}
       footer={[]}
     >
-
       {post?.comments?.map((comment) => {
-        console.log("heyyyyy", post.comments)
+          console.log("this is user", user.user)
+          post.comments.map(function(){
+              console.log("yo yo", user.user.name)
+            if(user.user._id === post.comments.userId) {
+                <div><p>{user.user.name}</p></div>
+            }
+          })
+        //   if(user.user._id === post.comments.userId) {
+        //     <p>{user.user.name}</p>
+        //   }
+          console.log("heyyyyy", post.comments)
         return (
           <div className="commentdiv">
-            <p>{comment.comment}</p>
+            <div></div>
+            <p>Comment: {comment.comment}</p>
+            <p>User Id: {comment.userId}</p>
+            
           </div>
         );
       })}
