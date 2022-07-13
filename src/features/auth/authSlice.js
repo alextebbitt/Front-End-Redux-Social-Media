@@ -59,6 +59,7 @@ export const getUserByName = createAsyncThunk("auth/getUserByName", async (userN
 export const follow = createAsyncThunk("auth/follow", async (_id, thunkAPI) => {
     try {
         return await authService.follow(_id);
+        
     } catch (error) {
         console.error(error);
         const message = error.response.data.message;
@@ -116,13 +117,15 @@ export const authSlice = createSlice({
 
             })
             .addCase(follow.fulfilled, (state, action) => {
+                console.log("tell me", action.payload.message)
                 const users = state.users.map((user) => {
-                    console.log(action.payload)
                     if (user._id === action.payload.user._id) {
                         user = action.payload.user;
                     }
                     return user;
                 });
+                state.isSuccess = true;
+                state.message = action.payload.message;
                 state.users = users;
             })
              .addCase(follow.rejected, (state, action) => {
@@ -137,6 +140,8 @@ export const authSlice = createSlice({
                     }
                     return user;
                 });
+                state.isSuccess = true;
+                state.message = action.payload.message;
                 state.users = users;
             })
     },

@@ -21,7 +21,7 @@ const SearchUser = () => {
         notification.success({ message: "Success", description: message });
       }
       dispatch(getUserByName(userName));
-      
+      dispatch(reset())
     }, [ isError, isSuccess, message]);
 
 useEffect(() => {
