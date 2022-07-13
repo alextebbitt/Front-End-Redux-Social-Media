@@ -45,6 +45,7 @@
     flex-wrap: wrap;
     max-width: 100%;
     
+    
 }
 .searchuserbardiv{
 background-color: $yellow;
@@ -76,8 +77,11 @@ padding-bottom: 15px;
 }
 .topdiv{
      
- 
+ padding-top: 70px;
   text-decoration: none;
   font-size: 20px;
   align-items: flex-end;
+   position:relative;
+   bottom:0;
+   width: 100%;
 }

@@ -2,15 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
 
 .name-email {
+    font-family: "pathway Gothic One";
+    font-size: 26px;
+    box-shadow: 0 4px 8px 0 rgba(178, 28, 183, 0.808);
     margin-top: 2rem;
     margin-bottom: 2rem;
     margin-left: 60px;
     display: flex;
     flex-direction: column;
-    border: solid;
+    border: none;
     background-color: $yellow;
     border-radius: 70px;
-    width: 60%;
+   padding: 10px;
     flex-wrap: wrap;
     max-width: 100%;
 }
@@ -47,6 +50,8 @@
     display: flex;
    margin-left: 100px;
    flex-wrap: wrap;
+   display: flex;
+   font-family: "pathway Gothic One";
    
     max-width: 100%;
 
@@ -57,7 +62,7 @@
     padding-left: 10px;
 }
 .file-upload-button {
-    border-radius: 50px;
+    border-radius: 100px;
 
 }
 .upload-div{

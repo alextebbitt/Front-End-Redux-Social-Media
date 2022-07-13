@@ -12,15 +12,20 @@
 
 .follow {
     border-radius: 2rem;
-    font-size: 20px;
+    font-size: 30px;
     background-color: $mid;
     border: none;
+    font-family: "pathway Gothic One";
+    box-shadow: 0 4px 8px 0 rgba(183, 28, 28, 0.908);
 }
 .unfollow {
    border-radius: 2rem;
-    font-size: 20px; 
+    font-size: 30px; 
     background-color: $mid;
     border: none;
+    font-family: "pathway Gothic One";
+    box-shadow: 0 4px 8px 0 rgba(183, 28, 28, 0.908);
+    
 }
 
 .follow:hover , .unfollow:hover{
@@ -28,26 +33,36 @@
 }
 .details-pic{
     display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
 }
 .image-searchuser{
     padding-top: 10px;
     padding-left: 40px;
+    padding-right: 40px;
     margin-left: 80px;
-    padding-bottom: 40px;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 .user-details{
-    margin-left: 100px;
+    margin-left: 200px;
     display: flex;
     flex-direction: column;
-    padding-top: 40px;
+    box-shadow: 0 4px 8px 0 rgba(157, 28, 183, 0.908);
     padding-left: 40px;
     padding-right: 40px;
     margin-bottom: 80px;
-    
+    font-family: "pathway Gothic One";
     background-color: $yellow;
     border-radius: 50px;
+    font-size: 24px;
+}
+.nameattop {
+    font-family: "pathway Gothic One";
+    font-size: 40px;
+    border-bottom: solid;
 }

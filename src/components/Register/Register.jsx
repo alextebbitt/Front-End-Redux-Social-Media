@@ -61,9 +61,9 @@ const Register = () => {
         <img src={Logo} alt="" height="500px" className="imagelogo"/>
       <div className="register-form">
       <h1 className="signup">Sign up</h1>
-        <form onSubmit={onSubmit}>
+        <form className="formform" onSubmit={onSubmit}>
           <h3>Name</h3>
-          <input type="text" name="name" value={name} onChange={onChange} />
+          <input className="name" type="text" name="name" value={name} onChange={onChange} />
           <h3>Email</h3>
           <input type="email" name="email" value={email} onChange={onChange} />
           <h3>Password</h3>

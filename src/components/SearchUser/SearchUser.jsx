@@ -32,7 +32,7 @@ useEffect(() => {
 
   return (
     <div>
-          <h1>{user?.user.name}</h1>
+      <h1 className="nameattop">{user?.user.name}</h1>
       <div className="details-pic">
         <div className="user-details">
           <h2>{user?.user.name}</h2>
@@ -43,22 +43,22 @@ useEffect(() => {
           <h4>Following: {user?.user.following.length}</h4>
           <h4>Liked posts: {user?.user.favourites.length}</h4>
         </div>
-        <div className='image-searchuser'>
+        <div className="image-searchuser">
           <img src={userpic2} alt="hhhhh" className="userpic-image" />
-      <div className="buttons-follow">
-        <button
-          className="follow"
-          onClick={() => dispatch(follow(user.user._id))}
-        >
-          Follow{" "}
-        </button>
-        <button
-          className="unfollow"
-          onClick={() => dispatch(unFollow(user.user._id))}
-        >
-          Unfollow
-        </button>
-      </div>
+          <div className="buttons-follow">
+            <button
+              className="follow"
+              onClick={() => dispatch(follow(user.user._id))}
+            >
+              Follow{" "}
+            </button>
+            <button
+              className="unfollow"
+              onClick={() => dispatch(unFollow(user.user._id))}
+            >
+              Unfollow
+            </button>
+          </div>
         </div>
       </div>
     </div>

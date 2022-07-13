@@ -41,7 +41,7 @@ const Login = () => {
   return (
       <div className="page-container2">
     <div className="image2">
-      <img
+      <img className="imagelogin"
         src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
         alt="Italian Trulli"
       ></img>
