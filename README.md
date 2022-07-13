@@ -2,7 +2,11 @@
 
  ## :bookmark: Index 
 
+- [Acknowledgment](#)
+
  - [About the project](#)
+
+ - [Requirements](#)
 
     - [Installation and deployment](#)
 
@@ -18,15 +22,34 @@
 
     - [XXXXXXXXXX](#)
 
-- [Acknowledgment](#)
-
 - [Things we would have liked to have added](#)
 
 - [Authors](#)
 
+## Acknowledgment
+
+First of all I would like to thank my teachers [Sofia](https://github.com/SofiaPinilla) [Germán](https://github.com/GeerDev) and [Ivan](https://github.com/ivanpuebla10) for teaching us React and for their pacience with us. We would also like to thank all of our classmates from the Bootcamp for always being there to help us resolve problems or simply to give us some constructive critism.
+
 ## About the project
 
 This project unifies everything learned so far. We will develop a social media site where users will register, login, view posts and create posts using the backend API I created in the 1st Backend Project.
+
+## Requirements
+Once the needs of the project have been analyzed, it is expected
+that the student develops a frontend that is capable of the following:
+● User registration.
+● User login.
+● That you can see the publications and create new ones.
+● That the publications made by the logged in user can be edited and deleted
+● Give/remove Like a post.
+● Search engine for user profiles or posts
+● That in your profile you can see your data and your posts
+● That you can comment on the publications
+
+
+Essential requirements of the project:
+● Use of branches with git, when the project is finished there should be two branches, the master or main and the develop.
+● Excellent README presentation.
 
 ## Installation and deployment
 
@@ -104,72 +127,34 @@ The project originates from the FullStack bootcamp at [TheBridge](https://www.th
 ### Register page
 ![Screnshot of login](./toReadme/Screenshot_2.png)
 
-### Orders and payments
-![Orders and payments](./toReadme/Screenshot_3.png)
+### Admin page
+![Admin page](./src/assets/admin.png)
+
+### Create a post
+![Create a post](./src/assets/createpost.png)
 
 ## Organization
 
-To organize the tasks we have used the application [Trello](https://trello.com/) with which you can comfortably manage tasks and "Tickets"
+To organize the tasks I have used the application [Trello](https://trello.com/) with which you can comfortably manage tasks and "Tickets"
 
 ### Screenshot of Trello
-![Screenshot of Trello](./toReadme/Trello.png)
+![Screenshot of Trello](./src/assets/trello.png)
 
 
 ## Challenges presented
 
-# Name in the Navbar
-
-![NavBar](./toReadme/NavBar_Screenshot.png)
-
-We wanted to show the first letter of the user's name inside the navigation bar, the problem was that in the localStorage we only stored the current token, and not the username, so when opening the application it crashed, we solved this by making sure that when the user logged in, the username is stored in localStorage.
-
-### Screenshot of the solution
-
-![Screenshot of the solution](./toReadme/NavBar_code.png)
-
-## Category filter
-
-![Category filter](./toReadme/Store_Screenshot.png)
-
-The objective was to make the category selector have as many options as there are categories on the server, for this we first make a call to the server that returns all the options and we map the result as follows:
-
-![Screenshot of the solution](./toReadme/Store_Code.png)
-
-Así logramos que cada opcion tenga su nombre y como `value` su id, esto ultimo lo usaremos para una vez selecciones una opcion se lance la llamada a la API y esta nos devuelva los articulos que pertenecen a esa categoria.
-
-This way we made that each option has its name and its id as `value`, the latter we will use so that once you select an option, the API call is launched and it returns the articles that belong to that category.
-
-## Amount in the cart 
-
-![Screenshot of the solution](./toReadme/Cart_Screenshot.png)
-
-In the first place we tried to have the amounts handled with a local state of the `cart` component, but after several debugs we discovered that this made it difficult to control the states. Finally, we chose to use the global state to handle it, this way we made sure full synchronization across all components.
+This was an incredibly difficult project, given that I did not know about React a few weeks ago. It has been a steep learning curve, but I am still motivated to continue learning and gettting better.  
 
 
-## Product searchbar/filters
+## Things I would have liked to have added
 
-For this we created a filter next to the search bar for the most expensive products to the least expensive and vice versa. originally we used the API, but we realized that when combined with the category filter there was a bug. To solve this we removed the api and used a .sort() method. This is a good fix for when you only have a small amount of products, but if we were to have a thousands of products, the .sort method would take a long time to load all of the products. 
+- Add likes to a comment
 
+- User profile picture
 
-## Acknowledgment
-
-We would like to thank our teachers [Sofia](https://github.com/SofiaPinilla) [Germán](https://github.com/GeerDev) and [Ivan](https://github.com/ivanpuebla10) for teaching us React and for their pacience with us. We would also like to thank all of our classmates from the Bootcamp for always being there to help us resolve problems or simply for giving us some constructive critism.
-
-## Things we would have liked to have added
-
-- Implement profile image.
-
-- Option for several carts
-
-- Wish list
-
-- Admin View
-
-- Comment system
+- See users post in user search page
 
 
 ## Authors
-
-### [Michael L. Sánchez](https://github.com/MrSetOne)
 
 ### [Alex Tebbitt](https://github.com/alextebbitt)

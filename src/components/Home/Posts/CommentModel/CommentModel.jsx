@@ -1,17 +1,22 @@
 import React from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Button, Modal, Form, Input } from "antd";
 import {comment} from "../../../../features/posts/postsSlice";
+import {reset,} from "../../../../features/auth/authSlice";
+import { notification } from "antd";
 import { useDispatch } from "react-redux";
 import "./CommentModel.scss";
 const CommentModel = ({ isModalVisible, setIsModalVisible }) => {
-    console.log("visible", isModalVisible)
+    
   const { post } = useSelector((state) => state.posts);
-  const { user } = useSelector((state) => state.auth);
-  console.log("este es el post", post)
+  const { user, isError, isSuccess, message } = useSelector( (state) => state.auth);
+
   const { TextArea } = Input;
   const dispatch = useDispatch();
   const [form] = Form.useForm();
+
+ 
 
   const onFinish = (values) => {
     const newComment = {
@@ -25,6 +30,8 @@ const CommentModel = ({ isModalVisible, setIsModalVisible }) => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
+
 
   return (
     <Modal
@@ -44,13 +51,12 @@ const CommentModel = ({ isModalVisible, setIsModalVisible }) => {
         //   if(user.user._id === post.comments.userId) {
         //     <p>{user.user.name}</p>
         //   }
-          console.log("heyyyyy", post.comments)
+          
         return (
           <div className="commentdiv">
-            <div></div>
+            <p>User name: {user.user.name}</p>
             <p>Comment: {comment.comment}</p>
             <p>User Id: {comment.userId}</p>
-            
           </div>
         );
       })}

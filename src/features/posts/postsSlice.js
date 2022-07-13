@@ -174,10 +174,9 @@ export const postsSlice = createSlice({
 
             })
             .addCase(comment.fulfilled, (state, action) => {
-                console.log("holis", action.payload)
-                state.post = action.payload;
                 state.isSuccess = true;
-                state.message = action.payload;
+                state.message = action.payload.message;
+                state.post = action.payload;
             })
 
     },
