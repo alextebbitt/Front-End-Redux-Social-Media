@@ -77,8 +77,9 @@ const updatePost = async (post) => {
 
 const comment = async (comment) => {
     const user = JSON.parse(localStorage.getItem("user"));
-    const res = await axios.put(API_URL + "/posts/comments/" + comment._id, comment, { headers: { authorization: user?.token } });
-    console.log("this is service", comment)
+    const res = await axios.put(API_URL + "/posts/comments/" + comment._id, comment, 
+    { headers: { authorization: user?.token } });
+    
 
     return res.data
 };

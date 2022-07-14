@@ -8,7 +8,7 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
     margin-left: 60px;
-    display: flex;
+   
     flex-direction: column;
     border: none;
     background-color: $yellow;
@@ -16,6 +16,7 @@
    padding: 10px;
     flex-wrap: wrap;
     max-width: 100%;
+    columns: 100px 2;
 }
 .yourprofile, .yourposts {
     font-family: "pathway Gothic One";
@@ -74,6 +75,11 @@
     max-width: 100%;
 }
 .bigdiv{
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.imageprofile{
     flex-wrap: wrap;
     max-width: 100%;
 }

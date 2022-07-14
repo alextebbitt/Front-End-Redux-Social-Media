@@ -33,7 +33,7 @@ const CreatePost = () => {
           <form className="form-post" onSubmit={OnCreatePost}>
             <div>
               <label className="label">
-                <h2>
+                <h2 className="titletitle">
                   Title of post <h6>(so people can find it in search bar)</h6>
                 </h2>
               </label>
@@ -47,7 +47,7 @@ const CreatePost = () => {
             </div>
             <div>
               <label>
-                <h2>---Post---</h2>
+                <h2 className="posttitle">---Post---</h2>
               </label>
               <div>
                 <textarea

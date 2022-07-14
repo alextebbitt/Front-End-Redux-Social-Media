@@ -58,27 +58,9 @@ BackEnd
     1. Download the repository from (https://github.com/alextebbitt/Backend-project) using `git clone https://github.com/alextebbitt/Backend-project`  From the terimal in whichever folder you like.  
 
     2. Once the repository has been cloned, all the packages needed for the project must be installed with `npm i` 
-
-    3. Inside the config folder, you must copy the file called `config.example.json` and name it `config.json`, inside you have to enter the following information:
     
-```JSON
-{
-    "development": {
-        "username": "Your user", // Here enter your mysql username 
-        "password": "Your pass", //Enter your mysql password
-        "database": "Your db", // The name of your database
-        "host": "Your host", //Your host
-        "dialect": "mysql",
-        "jwt_secret": "YourJWTPass", //The password to verify that the sender of the JWT is who they say they are
-        "auth": {
-            "user": "yourMail@gmail.com", //Name of the email address with which you want to send the confirmation email to register
-            "pass": "YourPass" //Password of that email account
-        }
-    },
-    ...
-}
-```
-    5. Inside the cloned folder of (https://github.com/alextebbitt/Backend-project) you have to run the command `npm start`
+
+    3. Inside the cloned folder of (https://github.com/alextebbitt/Backend-project) you have to run the command `npm start`
 
 - FrontEnd
 

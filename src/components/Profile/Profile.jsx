@@ -32,7 +32,6 @@ const Profile = () => {
   );
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalVisible2, setIsModalVisible2] = useState(false);
-  console.log("hello", user.user.postIds);
   const mapUser = user.user.postIds;
   const dispatch = useDispatch();
   const API_URL = "http://localhost:8787/"; //"https://social-media-redux.herokuapp.com/"
@@ -65,7 +64,7 @@ const Profile = () => {
         <div className="title-body-image">
           {post.image_path && (
             <div className="image">
-              <img src={API_URL + post.image_path} alt="" />
+              <img className="imageprofile" src={API_URL + post.image_path} alt="" />
             </div>
           )}
           <div className="title-body">

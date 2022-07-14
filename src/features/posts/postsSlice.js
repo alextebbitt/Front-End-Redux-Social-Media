@@ -86,8 +86,6 @@ export const updatePost = createAsyncThunk("posts/update", async (data, thunkAPI
 });
 
 export const comment = createAsyncThunk("posts/comments", async (comment) => {
-    console.log("this is id",comment)
-    
     try {
         return await postsService.comment(comment);
     } catch (error) {
@@ -109,7 +107,7 @@ export const postsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(getAll.fulfilled, (state, action) => {
+        .addCase(getAll.fulfilled, (state, action) => {
                 state.posts = action.payload;
             })
             .addCase(getAll.pending, (state) => {
@@ -121,14 +119,7 @@ export const postsSlice = createSlice({
             .addCase(getPostByName.fulfilled, (state, action) => {
                 state.posts = action.payload;
             })
-            .addCase(deletePost.fulfilled, (state, action) => {
-                state.posts = state.posts.filter(
-                    (post) => post._id !== action.payload.post._id);
-                 
-                state.isSuccess = true;
-                state.isError = false;
-                state.message = action.payload.message
-            })
+            
             .addCase(deletePost.rejected, (state, action) => {
                 state.isError = true
                 state.isSuccess = false;
@@ -167,11 +158,18 @@ export const postsSlice = createSlice({
                 state.isError = false;
                 state.message = action.payload.message
             })
+            .addCase(deletePost.fulfilled, (state, action) => {
+                state.posts = state.posts.filter(
+                    (post) => post._id !== action.payload.post._id);
+            state.isSuccess = true;
+            state.isError = false;
+            state.message = action.payload.message
+        })
             .addCase(updatePost.rejected, (state, action) => {
                 state.isError = true
                 state.isSuccess = false;
                 state.message = action.payload;
-
+                
             })
             .addCase(comment.fulfilled, (state, action) => {
                 state.isSuccess = true;

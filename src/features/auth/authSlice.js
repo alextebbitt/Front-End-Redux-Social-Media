@@ -117,7 +117,6 @@ export const authSlice = createSlice({
 
             })
             .addCase(follow.fulfilled, (state, action) => {
-                console.log("tell me", action.payload.message)
                 const users = state.users.map((user) => {
                     if (user._id === action.payload.user._id) {
                         user = action.payload.user;

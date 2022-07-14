@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, reset } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { notification, Button, Checkbox, Form, Input } from "antd";
+import { notification, Button,  Form, Input } from "antd";
 import "./Login.scss";
 const Login = () => {
   
@@ -35,7 +35,7 @@ const Login = () => {
    };
 
    const onFinishFailed = (errorInfo) => {
-     console.log("Failed:", errorInfo);
+     
    };
 
   return (

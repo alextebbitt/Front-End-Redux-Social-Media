@@ -17,7 +17,6 @@ const Footer = () => {
     const [text, setText] = useState("");
 const handleChange = (e) => {
   setText(e.target.value);
-console.log("this is test", text)
   if (e.key === "Enter") {
     navigate("/searchuser/" + text);
   }

@@ -41,9 +41,8 @@ const CommentModel = ({ isModalVisible, setIsModalVisible }) => {
       footer={[]}
     >
       {post?.comments?.map((comment) => {
-          console.log("this is user", user.user)
           post.comments.map(function(){
-              console.log("yo yo", user.user.name)
+              
             if(user.user._id === post.comments.userId) {
                 <div><p>{user.user.name}</p></div>
             }
